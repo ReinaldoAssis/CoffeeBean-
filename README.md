@@ -4,7 +4,11 @@ Proposta de projeto para a disciplina de Projeto de Software lecionada pelo prof
 
 # Proposta
 
-![Funcionalidades](https://i.imgur.com/IDSFsht.png)
+![Funcionalidades](https://i.imgur.com/.png)
+
+# Implementações POO
+
+Herança e polimorfismo implementadas em [Produto.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/Produto.java) sendo suas subclasses [Livro.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/Livro.java) e [Consumivel.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/Consumivel.java). Interface implementada em [iDB.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/iDB.java).
 
 # Integrantes
 
