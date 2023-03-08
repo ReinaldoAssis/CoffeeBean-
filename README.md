@@ -4,7 +4,7 @@ Proposta de projeto para a disciplina de Projeto de Software lecionada pelo prof
 
 # Proposta
 
-![Funcionalidades](https://i.imgur.com/.png)
+![Funcionalidades](https://i.ibb.co/sCG8Xxz/image.png)
 
 # Implementações POO
 
