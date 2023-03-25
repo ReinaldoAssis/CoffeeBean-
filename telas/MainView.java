@@ -1,9 +1,11 @@
 package telas;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import service.Controlador;
 
 public class MainView {
 
@@ -29,8 +31,9 @@ public class MainView {
     private Button btn_venda;
 
     @FXML
-    void estoque(ActionEvent event) {
-
+    void click_estoque(ActionEvent event) throws Exception{
+        Controlador ctrl = Controlador.getInstance();
+        ctrl.telaEstoque();
     }
 
 }

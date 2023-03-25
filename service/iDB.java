@@ -13,7 +13,7 @@ public interface iDB {
     public void ConsultaFidelidade();
     public void removerUsuario(String cpf);
     public void removerUsuario();
-    public void cadastrarProduto();
+    public void cadastrarProduto(Produto p);
     public void removerProduto();
     public void verificarEstoque();
     public void adicionarAoCarrinho(Usuario user, Produto produto, int quantidade);

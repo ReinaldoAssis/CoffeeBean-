@@ -10,6 +10,8 @@ public class Controlador {
     private static Controlador instance = null;
     private Stage stage;
     private Parent root;
+
+    public DB database = new DB(); // instanciando o banco de dados
     
     private Controlador() {
         // apenas para garantir que não seja instanciada
@@ -42,5 +44,15 @@ public class Controlador {
         this.stage.setHeight(800);
         this.stage.centerOnScreen();
         this.stage.show();
+    }
+
+    public void telaEstoque() throws Exception{
+        this.root = FXMLLoader.load(getClass().getResource("../telas/Estoque.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Estoque");
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
     }
 }

@@ -132,7 +132,9 @@ public class Main extends Application {
 
         Controlador ctrl = Controlador.getInstance();
         ctrl.setStage(primary);
-        ctrl.telaLogin();
+        //ctrl.telaLogin(); comentando apenas para testes
+        ctrl.telaPrincipal();
+        
     }
 
 }

@@ -1,0 +1,30 @@
+.tab-header-background {
+  -fx-background-color: #1e2029;
+}
+
+.tab {
+  -fx-background-color: #282a36;
+}
+
+.tab .tab-label {
+  -fx-text-fill: #ffffff;
+}
+
+.choice-box {
+  -fx-background-color: #1e2029;
+  -fx-mark-color: #6272a4;
+}
+
+.choice-box > .label {
+  -fx-text-fill: white;
+}
+
+.text-field {
+  -fx-background-color: #1e2029;
+  -fx-text-fill: white;
+}
+
+.button {
+  -fx-background-color: #50fa7b;
+  -fx-text-fill: rgb(0, 0, 0);
+}

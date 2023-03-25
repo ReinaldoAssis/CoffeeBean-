@@ -152,49 +152,22 @@ public class DB implements iDB {
 
     }
 
-    //@Adonys
-    public void cadastrarProduto()
-    {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("-----------------");
-        System.out.println("Digite o código do produto: ");
-        String Codigo = scanner.nextLine();
+    public void cadastrarProduto(Produto p)
+    {        
         
-        System.out.println("Digite o tipo do produto: ");
-        String Tipo = scanner.nextLine();
+        produtoList.add(p);
 
-        System.out.println("Digite o nome do produto: ");
-        String Nome = scanner.nextLine();
-        
-        System.out.println("Digite a quantidade que vai ser armazenada: ");
-        int Quantidade = scanner.nextInt();
-        
-        System.out.println("Digite o valor de compra produto: ");
-        double valorC = scanner.nextDouble();
-        
-        System.out.println("Digite o valor de venda produto: ");
-        double valorV = scanner.nextDouble();
-        
-        Produto pd = new Produto();
+        compra += p.valorDeCompra * p.quantidade;
 
-        if(Tipo.equalsIgnoreCase("livro"))
-            pd = new Livro(Codigo, Nome, Quantidade, valorC, valorV);
-        else if(Tipo.equalsIgnoreCase("consumivel"))
-        {
-            pd = new Consumivel(Codigo, Nome, Quantidade, valorC, valorV);
-        }
-        
-        produtoList.add(pd);
+        System.out.println(p.nome+" cadastrado com sucesso :D");
 
-        compra += valorC * Quantidade;
-
-        System.out.println(Nome+" cadastrado com sucesso :D");
-
-        Utils.awaitInput();
+        if(p instanceof Livro)
+            System.out.println("ISBN: " + ((Livro)p).getIsbn());
+        else if(p instanceof Consumivel)
+            System.out.println("Data de validade: " + ((Consumivel)p).getValidade());
 
     }
 
-    //@Reinaldo
     public void removerProduto()
     {
         //temos que considerar um caso especial: pode existir um carrinho com o produto que será removido
@@ -231,7 +204,6 @@ public class DB implements iDB {
         Utils.awaitInput();
     }
 
-    //@Adonys
     public void verificarEstoque()
     {
         Scanner scanner = new Scanner(System.in);
@@ -257,7 +229,6 @@ public class DB implements iDB {
         Utils.awaitInput();
     }
 
-    //@Reinaldo
     public void adicionarAoCarrinho(Usuario user, Produto produto, int quantidade)
     {
         if(produto.quantidade >= quantidade)
@@ -287,7 +258,6 @@ public class DB implements iDB {
         }
     }
 
-    //@Reinaldo
     public void printarEstoque()
     {
         System.out.println("Nome | Quantidade | Codigo");
@@ -298,14 +268,12 @@ public class DB implements iDB {
         System.out.println("-----------------");
     }
 
-    //@Reinaldo
     public void fluxoDeCaixa()
     {
         System.out.println("Fluxo de caixa: " + venda+" - "+compra+" = "+(venda-compra));
         Utils.awaitInput();
     }
 
-    //@Reinaldo
     public void menuCarrinho()
     {
         Scanner scanner = new Scanner(System.in);
@@ -369,7 +337,6 @@ public class DB implements iDB {
 
     }
 
-    //@Reinaldo
     public void promptAlugarLivro()
     {
 
@@ -408,7 +375,6 @@ public class DB implements iDB {
         Utils.awaitInput();
     }
 
-    //@Reinaldo
     public void finalizarCompra(Usuario user)
     {
         double total = 0;
@@ -425,7 +391,6 @@ public class DB implements iDB {
         Utils.awaitInput();
     }
 
-    //@Reinaldo
     public void printarCarrinho(Usuario user)
     {
         System.out.println("Nome | Quantidade | Codigo");
@@ -438,7 +403,6 @@ public class DB implements iDB {
         Utils.awaitInput();
     }
 
-    //@Reinaldo & @Adonys
     //solicita input do usuario e chama adicionarAoCarrinho
     public void promptAdicionarAoCarrinho(Usuario user) {
         Scanner scanner = new Scanner(System.in);
@@ -464,7 +428,6 @@ public class DB implements iDB {
         Utils.awaitInput();
     }
 
-    //@Reinaldo & @Adonys
     public void promptRemoverDoCarrinho(Usuario user) {
         Scanner scanner = new Scanner(System.in);
         //verificamos a existencia do produto

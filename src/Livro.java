@@ -5,10 +5,10 @@ public class Livro extends Produto {
     
 
     public int paginas;
-    public String autor;
-    public String editora;
-    public String isbn;
-    public String sinopse;
+    private String autor;
+    private String editora;
+    private String isbn;
+    private String sinopse;
 
     Livro(){}
 
@@ -19,6 +19,46 @@ public class Livro extends Produto {
         //this.tipo = _tipo;
         this.valorDeCompra = _valorDeCompra;
         this.valorDeVenda = _valorDeVenda;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setPaginas(int paginas) {
+        this.paginas = paginas;
+    }
+
+    public void setSinopse(String sinopse) {
+        this.sinopse = sinopse;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public int getPaginas() {
+        return paginas;
+    }
+
+    public String getSinopse() {
+        return sinopse;
     }
 
     @Override

@@ -19,6 +19,56 @@ public class Produto {
         this.valorDeVenda = _valorDeVenda;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getValorDeCompra() {
+        return valorDeCompra;
+    }
+
+    public void setValorDeCompra(double valorDeCompra) {
+        this.valorDeCompra = valorDeCompra;
+    }
+
+    public double getValorDeVenda() {
+        return valorDeVenda;
+    }
+
+    public void setValorDeVenda(double valorDeVenda) {
+        this.valorDeVenda = valorDeVenda;
+    }
+
+    public static Consumivel toConsumivel(Produto p){
+        Consumivel c = new Consumivel(p.codigo, p.nome, p.quantidade, p.valorDeCompra, p.valorDeVenda);
+        return c;
+    }
+
+    public static Livro toLivro(Produto p){
+        Livro l = new Livro(p.codigo, p.nome, p.quantidade, p.valorDeCompra, p.valorDeVenda);
+        return l;
+    }
+
     @Override
     public String toString() {
         // TODO Auto-generated method stub

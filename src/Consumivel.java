@@ -3,8 +3,8 @@ import java.sql.Date;
 
 public class Consumivel extends Produto {
     
-    public String tipo;
-    public Date validade;
+    private String porcao;
+    private String validade;
 
     public Consumivel(String _codigo, String _nome, int _quantidade, double _valorDeCompra, double _valorDeVenda) {
         this.codigo = _codigo;
@@ -15,9 +15,25 @@ public class Consumivel extends Produto {
         this.valorDeVenda = _valorDeVenda;
     }
 
+    public String getPorcao() {
+        return porcao;
+    }
+
+    public void setPorcao(String porcao) {
+        this.porcao = porcao;
+    }
+
+    public String getValidade() {
+        return validade;
+    }
+
+    public void setValidade(String validade) {
+        this.validade = validade;
+    }
+
     @Override
     public String toString() {
-        return "Tipo: " + tipo + "\nValidade: " + validade.toString();
+        return "Porcao: " + porcao + "\nValidade: " + validade.toString();
     }
 
 }
