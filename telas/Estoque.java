@@ -82,7 +82,11 @@ public class Estoque implements Initializable{
     @FXML
     private TextField quantidade;
 
+    @FXML
+    private Button btn_deletar;
+
     private String codigoOriginal = "";
+    private String codigoLinhaSelecionada = "";
 
     @FXML
     void click_menu_tipo(MouseEvent event) {
@@ -92,6 +96,16 @@ public class Estoque implements Initializable{
     @FXML
     void mouseEnter_menuTipo(MouseEvent event) {
 
+    }
+
+    @FXML
+    void click_deletar(ActionEvent event) {
+        Controlador ctrl = Controlador.getInstance();
+        String ctxt = codigoLinhaSelecionada; //codigo da linha selecionada
+        System.out.println("Codigo ----- "+ ctxt);
+        boolean resultado = ctrl.database.removerProduto(ctxt, false);
+        if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
+        
     }
    
 
@@ -215,6 +229,7 @@ public class Estoque implements Initializable{
                         
                         String codigo = v.substring(v.indexOf("[") + 1, v.indexOf("]"));
 
+                        codigoLinhaSelecionada = codigo;
                         
                         Produto _p = ctrl.database.getProduto(codigo);
                         produto.setText(_p.nome);

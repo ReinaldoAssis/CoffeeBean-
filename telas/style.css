@@ -24,10 +24,10 @@
   -fx-text-fill: white;
 }
 
-.button {
+/* .button .cadastrar {
   -fx-background-color: #50fa7b;
   -fx-text-fill: rgb(0, 0, 0);
-}
+} */
 
 .list-cell {
   -fx-control-inner-background: #282a36;
