@@ -71,8 +71,11 @@ public class Produto {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        return this.nome + " ["+this.codigo+"]";
+    }
+
+    public String displayName(){
+        return this.nome + " ["+this.codigo+"]";
     }
 
 }

@@ -14,7 +14,7 @@ public interface iDB {
     public void removerUsuario(String cpf);
     public void removerUsuario();
     public void cadastrarProduto(Produto p);
-    public void removerProduto();
+    public boolean removerProduto(String codigo, boolean force);
     public void verificarEstoque();
     public void adicionarAoCarrinho(Usuario user, Produto produto, int quantidade);
     public void printarEstoque();

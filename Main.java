@@ -13,6 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import service.Controlador;
+import src.Consumivel;
+import src.Livro;
+import src.Produto;
 
 public class Main extends Application {
 
@@ -134,7 +137,20 @@ public class Main extends Application {
         ctrl.setStage(primary);
         //ctrl.telaLogin(); comentando apenas para testes
         ctrl.telaPrincipal();
-        
+
+        //valores default
+
+        Livro l = new Livro( "1","Harry Potter", 10, 10, 300);
+        l.setEditora("Rocco");
+        l.setIsbn("978-8532530783");
+
+        Consumivel c = new Consumivel( "2","Coca-Cola", 10, 10, 300);
+        c.setValidade("12/12/2023");
+        c.setPorcao("350ml");
+
+        ctrl.database.produtoList.add(l);
+        ctrl.database.produtoList.add(c);
+
     }
 
 }

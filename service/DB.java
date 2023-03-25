@@ -3,6 +3,8 @@ package service;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import src.Consumivel;
 import src.Livro;
 import src.Produto;
@@ -12,8 +14,8 @@ import java.util.ArrayList;
 
 
 public class DB implements iDB {
-    List<Usuario> userList;
-    List<Produto> produtoList;
+    public List<Usuario> userList;
+    public List<Produto> produtoList;
 
     //Dictionary<Usuario, List<Produto>> vendas;
     double venda = 0;
@@ -35,6 +37,30 @@ public class DB implements iDB {
             }
         }
         return -1;
+    }
+
+    public int getProdutoIndexWithCode(String codigo)
+    {
+        for(int i=0; i<produtoList.size(); i++)
+        {
+            if(produtoList.get(i).codigo.equals(codigo))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public Produto getProduto(String codigo)
+    {
+        for(int i=0; i<produtoList.size(); i++)
+        {
+            if(produtoList.get(i).codigo.equals(codigo))
+            {
+                return produtoList.get(i);
+            }
+        }
+        return null;
     }
 
     public int getProdutoIndexUser(String nome, Usuario user)
@@ -168,40 +194,50 @@ public class DB implements iDB {
 
     }
 
-    public void removerProduto()
+    public boolean removerProduto(String codigo, boolean force)
     {
         //temos que considerar um caso especial: pode existir um carrinho com o produto que será removido
         //neste caso, solicita-se a confirmação
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("-----------------");
-        System.out.println("Digite o nome do produto: ");
-        String nome = scanner.nextLine();
+        int i = getProdutoIndexWithCode(codigo);
 
-        int i = getProdutoIndex(nome);
-        if(i == -1) System.out.println("O Produto não existe");
-        else {
-
-            //verificar se o produto está em algum carrinho
-            for(int j=0; j<userList.size(); j++)
-                if(userList.get(j).carrinho.contains(produtoList.get(i)))
-                {
-                    System.out.println("O produto está em um carrinho, deseja remover mesmo assim? [sim/nao]");
-                    String opcao = scanner.nextLine();
-                    if(opcao.equals("sim"))
-                    {
-                        System.out.println("O produto "+ produtoList.get(i).nome+ " foi removido" );
-                        produtoList.remove(i);
-                    }
-                    else
-                    {
-                        System.out.println("O produto "+ produtoList.get(i).nome+ " não foi removido e está contido em ao menos um carrinho (usuario:" + userList.get(j).nome+ " )" );
-                    }
-                    return;
-                }
+        if(force){
+           //JOptionPane.showMessageDialog(null, "O produto "+ produtoList.get(i).nome+ " foi removido.");
+            System.out.println("O produto "+ produtoList.get(i).nome+ " foi removido");
+            produtoList.remove(i);
+            return true;
         }
 
-        Utils.awaitInput();
+        //verificar se o produto está em algum carrinho
+        for(int j=0; j<userList.size(); j++){
+            if(userList.get(j).carrinho.contains(produtoList.get(i)))
+            {
+
+                int opcao = JOptionPane.showConfirmDialog(null, "O produto "+ produtoList.get(i).nome+ " está contido em ao menos um carrinho (usuario:" + userList.get(j).nome+ " ). Deseja remover mesmo assim?", "Remover produto", JOptionPane.YES_NO_OPTION);
+                if(opcao == JOptionPane.YES_OPTION)
+                {
+                    JOptionPane.showMessageDialog(null, "O produto "+ produtoList.get(i).nome+ " foi removido");
+                    System.out.println("O produto "+ produtoList.get(i).nome+ " foi removido");
+                    produtoList.remove(i);
+                    return true;
+                }
+            } 
+        }
+            
+        //caso não esteja em nenhum carrinho, remover normalmente
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja remover o produto "+ produtoList.get(i).nome+ "?", "Remover produto", JOptionPane.YES_NO_OPTION);
+        if(opcao == JOptionPane.YES_OPTION)
+        {
+            JOptionPane.showMessageDialog(null, "O produto "+ produtoList.get(i).nome+ " foi removido");
+            System.out.println("O produto "+ produtoList.get(i).nome+ " foi removido");
+            produtoList.remove(i);
+            return true;
+        }
+
+        return false;
+            
+        
+
     }
 
     public void verificarEstoque()

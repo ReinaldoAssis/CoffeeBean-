@@ -77,6 +77,12 @@
                            </font>
                         </Label>
                         <TextField id="input:arg2" fx:id="arg2" layoutX="262.0" layoutY="115.0" prefHeight="25.0" prefWidth="107.0" />
+                        <TextField id="quantidade" fx:id="quantidade" layoutX="387.0" layoutY="115.0" prefHeight="25.0" prefWidth="77.0" />
+                        <Label layoutX="387.0" layoutY="89.0" text="Quantidade" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
             </content>

@@ -28,3 +28,30 @@
   -fx-background-color: #50fa7b;
   -fx-text-fill: rgb(0, 0, 0);
 }
+
+.list-cell {
+  -fx-control-inner-background: #282a36;
+  -fx-control-inner-background-alt: derive(-fx-control-inner-background, 50%);
+}
+
+.list-view .list-cell:even {
+  -fx-background-color: #282a36;
+}
+.list-view .list-cell:odd {
+  -fx-background-color: #282a36;
+}
+
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected {
+  -fx-background-color: #44475a;
+}
+
+.list-cell:filled:focused,
+.list-cell:filled {
+  -fx-background-color: #282a36;
+}
+
+.list-cell:filled:focused .text,
+.list-cell:filled .text {
+  -fx-fill: white;
+}
