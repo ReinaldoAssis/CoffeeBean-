@@ -1,20 +1,25 @@
+
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.ResourceBundle.Control;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import service.Controlador;
 
 public class Main extends Application {
 
     public static void main(String[] args) {
 
         launch(args);
-
+        
         //#region LEGACY
         // DB db = new DB();
 
@@ -124,23 +129,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primary) throws Exception {
-        // TODO Auto-generated method stub
-       // throw new UnsupportedOperationException("Unimplemented method 'start'");
-    
-        primary.setTitle("Coffee bean");
-        Button btn = new Button("Oi :)");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event){
-                System.out.println("Hehe");
-            }
-            
-        });
 
-        StackPane root = new StackPane();
-        root.getChildren().addAll(btn);
-        primary.setScene(new Scene(root, 300, 250));
-        primary.show();
+        Controlador ctrl = Controlador.getInstance();
+        ctrl.setStage(primary);
+        ctrl.telaLogin();
     }
 
 }

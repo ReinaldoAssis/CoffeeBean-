@@ -1,3 +1,4 @@
+package src;
 public class Produto {
 
     public String codigo;

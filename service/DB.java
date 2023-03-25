@@ -1,5 +1,13 @@
+package service;
+
 import java.util.List;
 import java.util.Scanner;
+
+import src.Consumivel;
+import src.Livro;
+import src.Produto;
+import src.Usuario;
+
 import java.util.ArrayList;
 
 

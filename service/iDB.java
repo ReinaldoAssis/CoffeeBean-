@@ -1,3 +1,7 @@
+package service;
+import src.Produto;
+import src.Usuario;
+
 public interface iDB {
     
     public int getProdutoIndex(String nome);
