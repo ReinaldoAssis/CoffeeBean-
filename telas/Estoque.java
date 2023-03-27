@@ -137,7 +137,16 @@ public class Estoque implements Initializable{
         Controlador ctrl = Controlador.getInstance();
         boolean cadastro = btn_cadastrar.getText().equalsIgnoreCase("Cadastrar");
 
+        //verifica se o produto já existe, se sim, exibe uma mensagem de erro
+        if(cadastro && ctrl.database.getProdutoIndexWithCode(this.codigo.getText()) != -1)
+        {
+            Produto existente = ctrl.database.getProduto(this.codigo.getText());
+            JOptionPane.showMessageDialog(null, "O produto " + existente.nome + " já existe com esse código!");
+            return;
+        }
+
         try{
+            //verifica se o produto é um livro ou um consumível 
             if(tipo.getValue().equalsIgnoreCase("livro")){
                 Livro l = Produto.toLivro(p); //quase um casting
                 l.setEditora(arg1.getText());
@@ -157,12 +166,6 @@ public class Estoque implements Initializable{
 
             if(cadastro)
             {
-                if(ctrl.database.getProdutoIndexWithCode(this.codigo.getText()) == -1)
-                {
-                    Produto existente = ctrl.database.getProduto(this.codigo.getText());
-                    JOptionPane.showMessageDialog(null, "O produto " + existente.nome + " já existe com esse código!");
-                    return;
-                }
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
                 return;
             }
