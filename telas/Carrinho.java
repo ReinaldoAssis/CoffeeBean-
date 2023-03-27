@@ -15,22 +15,7 @@ public class Carrinho {
     private TextField cpfField;
 
     @FXML
-    void get_text(ActionEvent event) {
-
-    }
-
-    @FXML
-    void opencart(ActionEvent event) throws Exception {
-       // String cpf = cpfField.getText();
-        //System.out.println(cpf);
-        Controlador ctrl = Controlador.getInstance();
-        ctrl.tela2_Carrinho();
-    }
-
-    @FXML
-    void open_cart(ActionEvent event) throws Exception {
-        //String cpf = cpfField.getText();
-        //System.out.println(cpf);
+    private void abrircarr(ActionEvent event) throws Exception {
         Controlador ctrl = Controlador.getInstance();
         ctrl.tela2_Carrinho();
     }

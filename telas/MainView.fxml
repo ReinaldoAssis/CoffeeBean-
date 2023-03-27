@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btn_venda" mnemonicParsing="false" prefHeight="40.0" prefWidth="161.0" style="-fx-background-color: transparent;" text="Venda" textFill="WHITE">
+            <Button fx:id="btn_venda" mnemonicParsing="false" onAction="#click_venda" prefHeight="40.0" prefWidth="161.0" style="-fx-background-color: transparent;" text="Venda" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

@@ -1,38 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1E2029;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #282a36;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telas.Venda">
    <children>
-      <TabPane fx:id="troca" layoutX="-2.0" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane id="tabpane" fx:id="tabview" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Venda">
+          <Tab fx:id="tab_consultar" text="Venda">
             <content>
-              <AnchorPane fx:id="ok" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tabelinha" fixedCellSize="3.0" layoutX="-2.0" layoutY="-1.0" prefHeight="363.0" prefWidth="366.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="Produto" />
-                            <TableColumn prefWidth="112.0" text="Quantidade" />
-                              <TableColumn prefWidth="112.0" text="Valor" />
-                          </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TableView>
-                        <Button layoutX="454.0" layoutY="316.0" mnemonicParsing="false" text="Finalizar venda" />
+                        <ListView id="listview" fx:id="listview" prefHeight="374.0" prefWidth="231.0" style="-fx-background-color: #1E2029;" />
+                        <Label id="lbl:produtp" fx:id="produto" layoutX="246.0" layoutY="14.0" text="Produto" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label id="lbl:info" fx:id="info" layoutX="246.0" layoutY="52.0" text="Info" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button id="deletar" fx:id="btn_deletar" layoutX="474.0" layoutY="315.0" mnemonicParsing="false" onAction="#click_del" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #ff5555;" text="Deletar" />
+                        <Button fx:id="btn_vis" layoutX="323.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_vis" text="Visualizar Carrinho" />
+                        <Button fx:id="btn_add" layoutX="393.0" layoutY="273.0" mnemonicParsing="false" onAction="#click_add" style="-fx-background-color: #50fa7b;" text="Adicionar ao carrinho" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Aluguel">
+          <Tab fx:id="tab_cadastrar" text="Alugar">
             <content>
-              <AnchorPane fx:id="alugase" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="22.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: #282a36;" text="Livros" textFill="WHITE" />
+                        <ListView id="listview" fx:id="listview1" prefHeight="374.0" prefWidth="231.0" style="-fx-background-color: #1E2029;" />
+                        <Label id="lbl:produtp" fx:id="produto1" layoutX="246.0" layoutY="14.0" text="Produto" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label id="lbl:info" fx:id="info1" layoutX="246.0" layoutY="44.0" text="Info" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button id="cadastrar" fx:id="btn_alugar" layoutX="473.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_alug" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #50fa7b;" text="Alugar" />
+                        <TextField fx:id="quantidade" layoutX="464.0" layoutY="272.0" prefHeight="4.0" prefWidth="114.0" />
+                        <Label layoutX="481.0" layoutY="252.0" text="Quantidade" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
             </content>

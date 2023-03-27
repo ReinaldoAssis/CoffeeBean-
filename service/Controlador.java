@@ -76,6 +76,7 @@ public class Controlador {
         stage.setResizable(false);
         stage.show();
     }
+    
     public void tela2_Carrinho() throws Exception{
         this.root = FXMLLoader.load(getClass().getResource("../telas/Venda.fxml"));
         Stage stage = new Stage();
