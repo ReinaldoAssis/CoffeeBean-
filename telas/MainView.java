@@ -42,4 +42,9 @@ public class MainView {
         ctrl.telaCaixa();
     }
 
+    @FXML
+    void click_venda(ActionEvent event) throws Exception {
+        Controlador ctrl = Controlador.getInstance();
+        ctrl.tela1_Carrinho();
+    }
 }
