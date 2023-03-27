@@ -36,4 +36,10 @@ public class MainView {
         ctrl.telaEstoque();
     }
 
+    @FXML
+    void click_caixa(ActionEvent event) throws Exception {
+        Controlador ctrl = Controlador.getInstance();
+        ctrl.telaCaixa();
+    }
+
 }

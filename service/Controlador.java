@@ -55,4 +55,15 @@ public class Controlador {
         stage.setResizable(false);
         stage.show();
     }
+
+    public void telaCaixa() throws Exception {
+        this.root = FXMLLoader.load(getClass().getResource("../telas/FluxoCaixa.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Fluxo de Caixa");
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
+        
+    }
 }

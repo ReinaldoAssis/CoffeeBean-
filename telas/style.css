@@ -55,3 +55,30 @@
 .list-cell:filled .text {
   -fx-fill: white;
 }
+
+/* Tableview */
+
+.table-view {
+  --fx-background-color:#282a36;
+}
+
+.table-view .column-header-background .label{
+  -fx-background-color: transparent;
+  -fx-text-fill: rgb(0, 0, 0);
+}
+
+.table-view .column-header {
+  -fx-background-color: transparent;
+}
+
+.table-view .table-cell:even{
+  -fx-text-fill: #282a36;
+}
+
+.table-view .table-cell:odd{
+  -fx-text-fill: #282a36;
+}
+
+.table-row-cell:selected {
+  -fx-background-color: #44475a;
+}
