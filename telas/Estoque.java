@@ -157,6 +157,12 @@ public class Estoque implements Initializable{
 
             if(cadastro)
             {
+                if(ctrl.database.getProdutoIndexWithCode(this.codigo.getText()) == -1)
+                {
+                    Produto existente = ctrl.database.getProduto(this.codigo.getText());
+                    JOptionPane.showMessageDialog(null, "O produto " + existente.nome + " já existe com esse código!");
+                    return;
+                }
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
                 return;
             }
@@ -199,6 +205,7 @@ public class Estoque implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         Controlador ctrl = Controlador.getInstance();
+        System.out.println("Compras " + ctrl.database.compra);
 
         // TODO Auto-generated method stub
         tipo.getItems().addAll("Livro", "Consumivel");

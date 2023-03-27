@@ -18,8 +18,8 @@ public class DB implements iDB {
     public List<Produto> produtoList;
 
     //Dictionary<Usuario, List<Produto>> vendas;
-    double venda = 0;
-    double compra = 0;
+    public double venda = 0;
+    public double compra = 0;
 
     public DB()
     {
