@@ -3,4 +3,18 @@ Curso: Engenharia de Computação
 
 Palestra: Sistemas 24/7
 
-Sistemas vinte e quatro por sete - comumente referenciados como 24/7 - são aqueles que necessitam de
+Sistemas vinte e quatro por sete - comumente referenciados como 24/7 - são aqueles que necessitam de 
+funcionamento contínuo, sem interrupções, durante 24 horas por dia, 7 dias por semana. Esses sistemas são 
+críticos em diversas áreas, como saúde, transporte, telecomunicações e serviços financeiros, e sua falha pode ter 
+consequências graves não se limitando apenas a perdas financeiras, mas também vidas: um exemplo são os sistemas que 
+regem a estrutura hospitalar.
+
+O palestrante adverte sobre diversas práticas como o costume de muitos desenvolvedores em colocar sistemas imaturos, 
+isto é, que não foram amplamente testados, no ar. O resultado é sempre o mesmo: a falha do sistema devido a erros não 
+considerados. Além disso, foi discutido a relevância dos algoritmos e estruturas de dados ao nível de sistemas grandes, 
+para parafrasear o palestrante: nesse nível não há bibliotecas prontas a serem utilizadas, temos que fazer o design de 
+toda a estrutura e escrever todas as bibliotecas que precisamos.
+
+Por fim, conclui-se que não há necessidade de "decorar" algoritmo por algoritmo, o fator importante é sabermos de sua
+existência e possuir a habilidade de implementa-los quando necessário, além de desenvolver sistemas de forma a sempre
+considerar o caminho ótimo.
