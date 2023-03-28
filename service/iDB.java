@@ -16,14 +16,14 @@ public interface iDB {
     public void cadastrarProduto(Produto p);
     public boolean removerProduto(String codigo, boolean force) ;
     public void verificarEstoque();
-    public void adicionarAoCarrinho(Usuario user, Produto produto, int quantidade);
+    public boolean adicionarAoCarrinho(Usuario user, String codigo, int quantidade);
     public void printarEstoque();
     public void fluxoDeCaixa();
     public void menuCarrinho();
-    public void promptAlugarLivro();
+    public boolean promptAlugarLivro(Usuario user, String codigo);
     public void finalizarCompra(Usuario user);
     public void printarCarrinho(Usuario user);
     public void promptAdicionarAoCarrinho(Usuario user);
-    public void promptRemoverDoCarrinho(Usuario user);
+    public boolean promptRemoverDoCarrinho(Usuario user, String codigo);
 
 }

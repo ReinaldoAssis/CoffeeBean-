@@ -12,21 +12,18 @@
         <tabs>
           <Tab fx:id="tab_consultar" text="Venda">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #1e2029;">
                      <children>
-                        <ListView id="listview" fx:id="listview" prefHeight="374.0" prefWidth="231.0" style="-fx-background-color: #1E2029;" />
-                        <Label id="lbl:produtp" fx:id="produto" layoutX="246.0" layoutY="14.0" text="Produto" textFill="WHITE">
+                        <ListView id="listview" fx:id="listview" layoutY="47.0" prefHeight="263.0" prefWidth="600.0" style="-fx-background-color: #1e2029;" />
+                        <Label id="lbl:produtp" fx:id="produto" layoutX="14.0" layoutY="14.0" text="Produtos Disponiveis" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label id="lbl:info" fx:id="info" layoutX="246.0" layoutY="52.0" text="Info" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="btn_vis" layoutX="402.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_vis" text="Visualizar Carrinho" />
-                        <Button fx:id="btn_add" layoutX="393.0" layoutY="273.0" mnemonicParsing="false" onAction="#click_add" style="-fx-background-color: #50fa7b;" text="Adicionar ao carrinho" />
+                        <Button fx:id="btn_vis" layoutX="260.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_vis" text="Visualizar Carrinho" />
+                        <Button fx:id="btn_add" layoutX="425.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_add" style="-fx-background-color: #50fa7b;" text="Adicionar ao carrinho" />
+                        <TextField fx:id="quantidade" layoutX="439.0" layoutY="272.0" prefHeight="18.0" prefWidth="134.0" style="-fx-background-color: #44475a;" />
+                        <TextField layoutX="457.0" layoutY="240.0" prefHeight="32.0" prefWidth="99.0" text="Quantidade:" />
                      </children>
                   </AnchorPane>
             </content>
@@ -47,12 +44,6 @@
                            </font>
                         </Label>
                         <Button id="cadastrar" fx:id="btn_alugar" layoutX="473.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_alug" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #50fa7b;" text="Alugar" />
-                        <TextField fx:id="quantidade" layoutX="464.0" layoutY="272.0" prefHeight="4.0" prefWidth="114.0" />
-                        <Label layoutX="481.0" layoutY="252.0" text="Quantidade" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
             </content>

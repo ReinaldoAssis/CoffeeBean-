@@ -265,8 +265,11 @@ public class DB implements iDB {
         Utils.awaitInput();
     }
 
-    public void adicionarAoCarrinho(Usuario user, Produto produto, int quantidade)
+    public boolean adicionarAoCarrinho(Usuario user, String codigo, int quantidade)
     {
+        int i = getProdutoIndexWithCode(codigo);
+        Produto produto = produtoList.get(i);
+        
         if(produto.quantidade >= quantidade)
         {
             produto.quantidade -= quantidade;
@@ -287,10 +290,12 @@ public class DB implements iDB {
                 p2.quantidade += quantidade;
             }
             System.out.println(produto.nome+" adicionado ao carrinho");
+            return true;
         }
         else
         {
             System.out.println("Quantidade indisponivel");
+            return false;
         }
     }
 
@@ -351,9 +356,9 @@ public class DB implements iDB {
                 case 1:
                     promptAdicionarAoCarrinho(user);
                     break;
-                case 2:
+               /* case 2:
                     promptRemoverDoCarrinho(user);
-                    break;
+                    break;*/
                 case 3:
                     printarCarrinho(user);
                     break;
@@ -373,42 +378,21 @@ public class DB implements iDB {
 
     }
 
-    public void promptAlugarLivro()
+    public boolean promptAlugarLivro(Usuario user,String codigo)
     {
-
-        Scanner scanner = new Scanner(System.in);
-        Utils.clearScreen();
-
-        System.out.println("Digite o CPF do usuario: ");
-        
-        String cpf = scanner.nextLine();
-        int u = getUserIndex(cpf);
-        
-        if (u == -1) {
-            System.out.println("Usuario não cadastrado");
-            return;
-        }
-        
-        Usuario user = userList.get(u);
-        
-        System.out.println("Digite o nome do livro: ");
-        String nome = scanner.nextLine();
-        
-        int i = getProdutoIndex(nome);
-        if(i == -1) System.out.println("O Produto não existe");
-        else {
+        int i = getProdutoIndexWithCode(codigo);
+       
             Produto p = produtoList.get(i);
             if(p.getClass() == Livro.class)
             {
                 user.alugados.add(p);
                 user.fidelidade += 1;
             }
+            JOptionPane.showMessageDialog(null, "Livro alugado por "+ user.nome+", valor: "+ p.valorDeVenda*0.3);
             System.out.println("Livro alugado por "+ user.nome+", valor: "+ p.valorDeVenda*0.3);
             venda += p.valorDeVenda*0.3;
-        }
+            return true;
 
-        
-        Utils.awaitInput();
     }
 
     public void finalizarCompra(Usuario user)
@@ -418,6 +402,7 @@ public class DB implements iDB {
         {
             total += user.carrinho.get(i).valorDeVenda*user.carrinho.get(i).quantidade;
         }
+        JOptionPane.showMessageDialog(null, "Compra finalizada, total: " + total);
         System.out.println("Compra finalizada, total: " + total);
         
         venda += total;
@@ -457,52 +442,32 @@ public class DB implements iDB {
             System.out.println("Digite a quantidade que deseja adicionar: ");
             Scanner scanner2 = new Scanner(System.in);
             int quantidade = scanner2.nextInt();
-            adicionarAoCarrinho(user, p1, quantidade);//chama a função no usuário solicitad
+           // adicionarAoCarrinho(user, p1, quantidade);//chama a função no usuário solicitad
 
         }
 
         Utils.awaitInput();
     }
 
-    public void promptRemoverDoCarrinho(Usuario user) {
-        Scanner scanner = new Scanner(System.in);
-        //verificamos a existencia do produto
+    public boolean promptRemoverDoCarrinho(Usuario user,String codigo) {
 
-        printarCarrinho(user);
+        int i = getProdutoIndexWithCode(codigo);
+        if(i == -1){
+            System.out.println("Produto não listado no estoque");
+            return false;}
+        Produto p1 = produtoList.get(i);
+        user.carrinho.remove(i);
 
-        System.out.println("Digite o nome do produto: ");
-        String Nome = scanner.nextLine();
-        int i = getProdutoIndex(Nome);
-        int j = getProdutoIndexUser(Nome, user);
+      /* int j = getProdutoIndexUser(p1.nome, user);
+        Produto p2 = user.carrinho.get(j);
+                
+        int quantidade = p1.quantidade;
+        int q = p2.quantidade;
+        p2.quantidade = q - quantidade;
+        p1.quantidade += quantidade;
+        System.out.println(p1.nome + "foi removido do carrinho");*/
 
-        if (j == -1) {
-            System.out.println("Produto não listado no carrinho do usuário");
-        } else {
-            //aqui temos que fazer um teste extra, verificar se o produto está no carrinho do usuário
-            Produto p1 = this.produtoList.get(i);
-            Produto p2 = user.carrinho.get(j);
-
-                System.out.println("Digite a quantidade que deseja remover: ");
-                Scanner scanner2 = new Scanner(System.in);
-                int quantidade = scanner2.nextInt();
-                //verifica se a quantidade a ser removida é maior que a quantidade do produto no carrinho
-                if(p2.quantidade <= quantidade){
-                    int quantidadeTemp = p2.quantidade;
-                    user.carrinho.remove(p2);
-                    p1.quantidade += quantidadeTemp;
-                    System.out.println(p1.nome+" removido do carrinho");
-                }
-                else
-                {
-                    int q = p2.quantidade;
-                    p2.quantidade = q - quantidade;
-                    p1.quantidade += quantidade;
-                    System.out.println(quantidade+" "+p1.nome+" removido do carrinho");
-                }
-
-
+        JOptionPane.showMessageDialog(null, p1.nome + " foi removido do carrinho");
+        return true;
         }
-
-        Utils.awaitInput();
-    }
 }

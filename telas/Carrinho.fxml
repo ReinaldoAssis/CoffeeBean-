@@ -9,15 +9,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="247.0" prefWidth="436.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telas.Carrinho">
+<VBox alignment="CENTER" prefHeight="247.0" prefWidth="436.0" spacing="10" style="-fx-background-color: #282a36;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telas.Carrinho">
    <children>
-       <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Digite seu CPF para abrir o carrinho">
+       <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Digite seu CPF para abrir o carrinho" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="43.0" />
          </font>
       </Label>
-       <Label text="CPF:" />
+       <Label text="CPF:" textFill="WHITE" />
        <TextField fx:id="cpfField" prefHeight="4.0" prefWidth="344.0" />
-       <Button fx:id="openCartButton" text="Abrir Carrinho" />
+       <Button fx:id="openCartButton" onAction="#abrircarr" text="Abrir Carrinho" />
    </children>
 </VBox>
