@@ -67,8 +67,18 @@ public class Controlador {
         
     }
 
-    public void tela1_Carrinho() throws Exception{
+    public void tela1_Carrinho() throws Exception{ //pegar CPF
         this.root = FXMLLoader.load(getClass().getResource("../telas/Carrinho.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Identificação");
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
+    }
+    
+    public void tela2_Carrinho() throws Exception{ //Vender ou alugar
+        this.root = FXMLLoader.load(getClass().getResource("../telas/Venda.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Venda");
         stage.setScene(new Scene(root));
@@ -76,12 +86,12 @@ public class Controlador {
         stage.setResizable(false);
         stage.show();
     }
-    
-    
-    public void tela2_Carrinho() throws Exception{
-        this.root = FXMLLoader.load(getClass().getResource("../telas/Venda.fxml"));
+
+
+    public void tela3_Carrinho() throws Exception{ //Visualizar carrinho
+        this.root = FXMLLoader.load(getClass().getResource("../telas/VisCarrinho.fxml"));
         Stage stage = new Stage();
-        stage.setTitle("Venda 2");
+        stage.setTitle("Visual. Carrinho");
         stage.setScene(new Scene(root));
         stage.centerOnScreen();
         stage.setResizable(false);
