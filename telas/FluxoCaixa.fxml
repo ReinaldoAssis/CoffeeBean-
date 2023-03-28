@@ -4,20 +4,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #282A36;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="table_gasto" layoutX="67.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-      <TableView fx:id="table_vendas" layoutX="300.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
-         <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
-         </columns>
-      </TableView>
+      <Label fx:id="infos" layoutX="241.0" layoutY="192.0" prefHeight="17.0" prefWidth="119.0" text="Label" />
    </children>
 </AnchorPane>
