@@ -97,4 +97,14 @@ public class Controlador {
         stage.setResizable(false);
         stage.show();
     }
+
+    public void userArea() throws Exception{
+        this.root = FXMLLoader.load(getClass().getResource("../telas/user.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("userArea");
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
+    }
 }

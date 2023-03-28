@@ -29,6 +29,7 @@ public class MainView {
 
     @FXML
     private Button btn_venda;
+    
 
     @FXML
     void click_estoque(ActionEvent event) throws Exception{
@@ -46,5 +47,11 @@ public class MainView {
     void click_venda(ActionEvent event) throws Exception {
         Controlador ctrl = Controlador.getInstance();
         ctrl.tela1_Carrinho();
+    }
+
+    @FXML
+    void click_usuarios(ActionEvent event) throws Exception {
+        Controlador ctrl = Controlador.getInstance();
+        ctrl.userArea();
     }
 }

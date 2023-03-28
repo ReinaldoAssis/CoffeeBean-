@@ -16,8 +16,8 @@
             <Font name="Arial Black" size="43.0" />
          </font>
       </Label>
-       <Label text="CPF" />
+       <Label text="CPF:" />
        <TextField fx:id="cpfField" prefHeight="4.0" prefWidth="344.0" />
-       <Button fx:id="openCartButton" onAction="#abrircarr" text="Abrir Carrinho" />
+       <Button fx:id="openCartButton" text="Abrir Carrinho" />
    </children>
 </VBox>
