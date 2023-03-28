@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="247.0" prefWidth="436.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="247.0" prefWidth="436.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telas.Carrinho">
    <children>
        <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Digite seu CPF para abrir o carrinho">
          <font>

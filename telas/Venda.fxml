@@ -25,8 +25,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Button id="deletar" fx:id="btn_deletar" layoutX="474.0" layoutY="315.0" mnemonicParsing="false" onAction="#click_del" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #ff5555;" text="Deletar" />
-                        <Button fx:id="btn_vis" layoutX="323.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_vis" text="Visualizar Carrinho" />
+                        <Button fx:id="btn_vis" layoutX="402.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_vis" text="Visualizar Carrinho" />
                         <Button fx:id="btn_add" layoutX="393.0" layoutY="273.0" mnemonicParsing="false" onAction="#click_add" style="-fx-background-color: #50fa7b;" text="Adicionar ao carrinho" />
                      </children>
                   </AnchorPane>
