@@ -13,17 +13,16 @@ import javafx.fxml.Initializable;
 public class FluxoCaixa implements Initializable {
 
     @FXML
-    private TableView<?> table_vendas;
-
-    @FXML
-    private TableView<?> table_gasto;
+    private TableView<?> table_all;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        TableColumn teste = new TableColumn<>("teste");
-        teste.setCellValueFactory(new PropertyValueFactory<>("name"));
-        table_gasto.getColumns().addAll(teste);
+        Controlador ctrl = Controlador.getInstance();
+        System.out.println("vendas :" + ctrl.database.venda + "\n" + "compras :" + ctrl.database.compra);
+        System.out.println("situação de caixa :" + (ctrl.database.compra-ctrl.database.venda));
+     
+        
     }
 
 }
