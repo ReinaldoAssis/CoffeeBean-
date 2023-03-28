@@ -1,0 +1,6 @@
+Aluno: Reinaldo Miranda de Assis
+Curso: Engenharia de Computação
+
+Palestra: Sistemas 24/7
+
+Sistemas vinte e quatro por sete - comumente referenciados como 24/7 - são aqueles que necessitam de

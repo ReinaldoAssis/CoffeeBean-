@@ -15,13 +15,13 @@ import javafx.fxml.Initializable;
 public class FluxoCaixa implements Initializable {
 
     @FXML
-    private Label infosLabel;
+    private Label infos;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         Controlador ctrl = Controlador.getInstance();
-        infosLabel.setText("Compra total:" + ctrl.database.compra + "\n" + "Vendas total:" + ctrl.database.venda + "\n" + "Caixa:" + (ctrl.database.venda-ctrl.database.compra));
+        infos.setText("Compra total: " + ctrl.database.compra + "\n" + "Vendas total: " + ctrl.database.venda + "\n" + "Caixa: " + (ctrl.database.venda-ctrl.database.compra));
         //System.out.println("vendas :" + ctrl.database.venda + "\n" + "compras :" + ctrl.database.compra);
         //System.out.println("situação de caixa :" + (ctrl.database.compra-ctrl.database.venda));
      
