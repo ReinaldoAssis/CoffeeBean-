@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ResourceBundle.Control;
 
+import javax.sql.rowset.Joinable;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,6 +18,7 @@ import service.Controlador;
 import src.Consumivel;
 import src.Livro;
 import src.Produto;
+import src.Usuario;
 
 public class Main extends Application {
 
@@ -135,9 +138,10 @@ public class Main extends Application {
 
         Controlador ctrl = Controlador.getInstance();
         ctrl.setStage(primary);
-        //ctrl.telaLogin(); comentando apenas para testes
+        ctrl.telaLogin(); //comentando apenas para testes
         //ctrl.telaPrincipal();
-        ctrl.tela1_Carrinho();
+        //ctrl.tela1_Carrinho();
+        //ctrl.userArea();
 
         //valores default
 
@@ -149,8 +153,11 @@ public class Main extends Application {
         c.setValidade("12/12/2023");
         c.setPorcao("350ml");
 
+        Usuario u = new Usuario("Joel", "159.753.258-43", "joel@ic.ufal.br", "4002-8922");
+
         ctrl.database.produtoList.add(l);
         ctrl.database.produtoList.add(c);
+        ctrl.database.userList.add(u);
 
     }
 

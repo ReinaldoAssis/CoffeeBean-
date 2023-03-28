@@ -16,7 +16,14 @@ public class Usuario {
     public List<Produto> carrinho;
     public List<Produto> alugados;
 
-    public Usuario() {
+    public Usuario(){}
+
+    public Usuario(String _nome, String _CPF, String _email, String _numero) {
+
+        this.nome = _nome;
+        this.cpf = _CPF;
+        this.email = _email;
+        this.numero = _numero;
         this.setStatus(false);
         carrinho = new ArrayList<Produto>();
         alugados = new ArrayList<Produto>();
