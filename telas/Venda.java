@@ -14,6 +14,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import service.Controlador;
 import src.Livro;
 import src.Produto;
@@ -52,29 +53,27 @@ public class Venda {
     private Tab tab_cadastrar;
 
     @FXML
-    private Label info1;
-
-    @FXML
     private TextField quantidade;
-
-    @FXML
-    private Label info;
 
     //private String codigoOriginal = "";
     private String codigoLinhaSelecionada = "";
     private static int IndexUser;
 
+    //visualizar carrinho
     @FXML
     void click_vis(ActionEvent event) throws Exception {
         Controlador ctrl = Controlador.getInstance();
         ctrl.tela3_Carrinho();
         VisCarrinho.pegarDados(IndexUser);
+        Stage stage = (Stage) btn_vis.getScene().getWindow();
+        stage.close();
     }
 
     public static void pegarDados(int u){
         IndexUser = u; 
 }
 
+    //adicionar ao carrinho
     @FXML
     void click_add(ActionEvent event) {
 
@@ -91,12 +90,18 @@ public class Venda {
         JOptionPane.showMessageDialog(null, "Quantidade não informada!");
         return;
     }
+    else if(ctxt == "")
+    {
+        JOptionPane.showMessageDialog(null, "Nenhum produto selecionado!");
+        return;
+    }
 
     int qtd = Integer.parseInt(quantidadeStr);
     boolean resultado = ctrl.database.adicionarAoCarrinho(user, ctxt, qtd);
     if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
     }
 
+    //alugar livro
     @FXML
     void click_alug(ActionEvent event) {
         Controlador ctrl = Controlador.getInstance();
@@ -104,13 +109,18 @@ public class Venda {
         System.out.println("Codigo ----- "+ ctxt);
 
          Usuario user = Controlador.getInstance().database.userList.get(IndexUser);
+        if(ctxt == "")
+        {
+        JOptionPane.showMessageDialog(null, "Nenhum produto selecionado!");
+        return;
+        }
          boolean resultado = ctrl.database.promptAlugarLivro(user, ctxt);
         if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
     }
 
     
 
- // P/ visualizar os produtos na tela(ainda não funciona 100%)
+ // P/ visualizar os produtos na tela
    @FXML
    private void initialize() {
     Controlador ctrl = Controlador.getInstance();
@@ -125,12 +135,12 @@ public class Venda {
 
     listview.getItems().addAll(lista_nomes);
 
-    // Add event listener to update selected index
+
     listview.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
         if (newVal != null) {
-            // Extract the index of the selected item
+
             int index = listview.getSelectionModel().getSelectedIndex();
-            // Update the codigoLinhaSelecionada variable
+  
             codigoLinhaSelecionada = ctrl.database.produtoList.get(index).getCodigo();
             System.out.println("Codigo da linha selecionada: " + codigoLinhaSelecionada);
         }
@@ -149,12 +159,11 @@ public class Venda {
 
     listview1.getItems().addAll(lista_nomes2);
 
-    // Add event listener to update selected index
     listview1.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
         if (newVal != null) {
-            // Extract the index of the selected item
+       
             int index = listview1.getSelectionModel().getSelectedIndex();
-            // Update the codigoLinhaSelecionada variable
+            
             codigoLinhaSelecionada = ctrl.database.produtoList.get(index).getCodigo();
             System.out.println("Codigo da linha selecionada: " + codigoLinhaSelecionada);
         }

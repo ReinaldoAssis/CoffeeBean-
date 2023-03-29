@@ -32,15 +32,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView id="listview" fx:id="listview1" prefHeight="374.0" prefWidth="231.0" style="-fx-background-color: #1E2029;" />
-                        <Label id="lbl:produtp" fx:id="produto1" layoutX="246.0" layoutY="14.0" text="Produto" textFill="WHITE">
+                        <ListView id="listview" fx:id="listview1" layoutY="41.0" prefHeight="333.0" prefWidth="606.0" style="-fx-background-color: #1E2029;" />
+                        <Label id="lbl:produtp" fx:id="produto1" layoutX="8.0" layoutY="11.0" text="Livros disponiveis:" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label id="lbl:info" fx:id="info1" layoutX="246.0" layoutY="44.0" text="Info" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <Button id="cadastrar" fx:id="btn_alugar" layoutX="473.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_alug" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #50fa7b;" text="Alugar" />

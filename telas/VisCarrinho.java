@@ -35,13 +35,17 @@ public class VisCarrinho {
     public static void pegarDados(int j){
          IndexUser = j; 
     }
+
+    //voltar as compras
     @FXML
-    void click_voltar(ActionEvent event) {
+    void click_voltar(ActionEvent event) throws Exception {
+        Controlador ctrl = Controlador.getInstance();
         Stage stage = (Stage) btn_voltar.getScene().getWindow();
         stage.close();
+        ctrl.tela2_Carrinho();
     }
 
-    @FXML // P/ visualizar os produtos na tela(ainda não funciona 100%)
+    @FXML // P/ visualizar os produtos na tela
     public void initialize(){
         Controlador ctrl = Controlador.getInstance();
         listview.getItems().clear();
@@ -54,32 +58,39 @@ public class VisCarrinho {
 
         listview.getItems().addAll(lista_nomes);
 
-        // Add event listener to update selected index
         listview.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
         if (newVal != null) {
-            // Extract the index of the selected item
+
             int index = listview.getSelectionModel().getSelectedIndex();
-            // Update the codigoLinhaSelecionada variable
+
             codigoLinhaSelecionada = ctrl.database.produtoList.get(index).getCodigo();
             System.out.println("Codigo da linha selecionada: " + codigoLinhaSelecionada);
         }
     });
     }
-
+    //deletar produto do carrinho
     @FXML
     void click_del(ActionEvent event) {
         Controlador ctrl = Controlador.getInstance();
         Usuario user = Controlador.getInstance().database.userList.get(IndexUser);
-    
+        
+        if(codigoLinhaSelecionada == "")
+        {
+            JOptionPane.showMessageDialog(null, "Nenhum produto selecionado!");
+            return;
+        }
         boolean resultado = ctrl.database.promptRemoverDoCarrinho(user, codigoLinhaSelecionada.trim());
         if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
     }
 
+    //finalizar compra
     @FXML
     void click_fin(ActionEvent event) {
         Controlador ctrl = Controlador.getInstance();
         Usuario user = Controlador.getInstance().database.userList.get(IndexUser);
         ctrl.database.finalizarCompra(user);
         //fechar janelas
+        Stage stage = (Stage) btn_fin.getScene().getWindow();
+        stage.close();
     }
 }
