@@ -1,0 +1,15 @@
+Relatório palestra Engenharia De sistemas 24/7 – Johnny Everson
+Aluna: Maria Fernanda Ribeiro Bernardes Pinto Costa
+
+  No bate-papo do dia 22/03 foram abordados diversos tópicos de interesse quando se trata da engenharia de sistemas 24/7, passando desde pontos mais superficiais, como a 
+necessidade de ter um sistema que rode limpamente, sem a presença de bugs, até outros mais aprofundados - como a importância de possuir um sistema bem distribuído de modo
+a evitar que uma falha em um dos servidores ocasione a queda do sistema.
+
+  Ademais, foi tratado sobre a importância de se construir um sistema que seja custo-eficiente pensando tanto na rentabilidade para a empresa quanto para a possibilidade 
+  de sua realização, buscando sempre o melhor uso dos recursos. E, posteriormente, foi falado sobre a relevância de manter métricas que permitam avaliar cada conjunto de
+  dados gerado pelo sistema criado, criando uma efetiva estratégia de monitoramento, que permita acionar os desenvolvedores responsáveis em caso de uma necessidade de 
+  atualização do programa bem como que permita criar planos de ação de gestão.
+	
+  Por fim, foi passada uma dica valiosa para se tornar um bom profissional engenheiro: é imprescindível prestar muita atenção no que foi explicado/combinado e anotar 
+  sempre que possível as informações importantes pois, por mais que seja possível encontrar pessoas dispostas a ensinar no mercado, nem sempre elas estarão disponíveis 
+  para repetir a informação já definida(ou passada).

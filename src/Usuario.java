@@ -96,6 +96,10 @@ public class Usuario {
         Utils.awaitInput();
     }
 
+    public String displayName(){
+        return this.nome + " ["+this.cpf+"]";
+    }
+
     public String getNome() {
         return nome;
     }

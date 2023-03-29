@@ -87,16 +87,23 @@ public class DB implements iDB {
         return -1;
     } 
 
-    public void criarUsuario()
+    public Usuario getUser(String cpf)
     {
-        Usuario User1 = new Usuario();
+        for(int i=0; i<userList.size(); i++)
+        {
+            if(userList.get(i).cpf.equals(cpf))
+            {
+                return userList.get(i);
+            }
+        }
+        return null;
+    } 
 
-        User1.criarConta();
-        Utils.clearScreen();
+    public void criarUsuario(Usuario User1)
+    {
+        //Utils.clearScreen();
 
-        userList.add(User1);
-
-        User1.estadoAtual();
+        userList.add(User1);                
 
     }
 
@@ -201,7 +208,7 @@ public class DB implements iDB {
 
         int i = getProdutoIndexWithCode(codigo);
 
-        if(force){
+        if(force){  
            //JOptionPane.showMessageDialog(null, "O produto "+ produtoList.get(i).nome+ " foi removido.");
             System.out.println("O produto "+ produtoList.get(i).nome+ " foi removido");
             produtoList.remove(i);

@@ -119,6 +119,20 @@ public class Estoque implements Initializable{
                     ctrl.database.cadastrarProduto(k);
                     JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
                     System.out.println(k.codigo+" "+k.nome+" "+k.valorDeCompra+" "+k.valorDeVenda+" "+k.quantidade);
+                    
+                    codigoOriginal = "";
+
+                    btn_cadastrar.setText("Cadastrar");
+                    btn_cadastrar.setStyle("-fx-background-color: #50fa7b; ");
+
+                    codigo.setText("");
+                    nome.setText("");
+                    custo.setText("");
+                    venda.setText("");
+                    arg1.setText("");
+                    arg2.setText("");
+                    quantidade.setText("");
+
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "O código do produto não pode ser alterado!");
@@ -136,7 +150,7 @@ public class Estoque implements Initializable{
         
         Controlador ctrl = Controlador.getInstance();
         boolean cadastro = btn_cadastrar.getText().equalsIgnoreCase("Cadastrar");
-
+        
         //verifica se o produto já existe, se sim, exibe uma mensagem de erro
         if(cadastro && ctrl.database.getProdutoIndexWithCode(this.codigo.getText()) != -1)
         {
@@ -185,6 +199,9 @@ public class Estoque implements Initializable{
             arg1.setText("");
             arg2.setText("");
             quantidade.setText("");
+            produto.setText(""); 
+            info.setText("");   
+            CarregarLista();
         }
             
         
@@ -313,7 +330,7 @@ public class Estoque implements Initializable{
                     }
                 }
             });
-
+          
           CarregarLista();
     }
 

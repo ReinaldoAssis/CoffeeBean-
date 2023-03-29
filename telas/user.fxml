@@ -9,64 +9,64 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1E2029;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-  <tabs>
-    <Tab text="Usuários">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="600.0" style="-fx-background-color: #282A36; -fx-text-fill: #FFFFFF;">
-               <children>
-                  <ListView layoutX="1.0" layoutY="1.0" prefHeight="373.0" prefWidth="230.0" style="-fx-background-color: #282A36; -fx-border-color: 1e2029;" />
-                  <Label layoutX="8.0" layoutY="4.0" prefHeight="17.0" prefWidth="173.0" text="User" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="256.0" layoutY="19.0" prefHeight="56.0" prefWidth="143.0" text="Usuário" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="256.0" layoutY="75.0" prefWidth="37.0" text="Info" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="493.0" layoutY="315.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: #ff5555;" text="Deletar" />
-               </children>
-            </AnchorPane>
-      </content>
-    </Tab>
-    <Tab text="Cadastro">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #282A36;">
-               <children>
-                  <TextField layoutX="61.0" layoutY="63.0" style="-fx-background-color: #1E2029;" />
-                  <TextField layoutX="234.0" layoutY="63.0" style="-fx-background-color: #1E2029;" />
-                  <TextField layoutX="61.0" layoutY="134.0" style="-fx-background-color: #1E2029;" />
-                  <TextField layoutX="234.0" layoutY="134.0" style="-fx-background-color: #1E2029;" />
-                  <Label fx:id="nome" layoutX="61.0" layoutY="43.0" prefHeight="17.0" prefWidth="90.0" text="Nome:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="cpf" layoutX="234.0" layoutY="43.0" prefHeight="17.0" prefWidth="90.0" text="Cpf:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="234.0" layoutY="114.0" prefHeight="17.0" prefWidth="90.0" text="Telefone:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="email" layoutX="61.0" layoutY="114.0" prefHeight="17.0" prefWidth="90.0" text="Email:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="492.0" layoutY="315.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #7eea7d;" text="Cadastrar"/>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-  </tabs>
-</TabPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #282a36;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telas.User">
+   <children>
+      <TabPane id="tabpane" fx:id="tabview" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tab_consultar" text="Consultar">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView id="listview" fx:id="listview" prefHeight="374.0" prefWidth="231.0" style="-fx-background-color: #1E2029;" />
+                        <Label id="lbl:info" fx:id="info" layoutX="246.0" layoutY="14.0" text="Informações" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label id="lbl:info" fx:id="info" layoutX="246.0" layoutY="52.0" text="Info" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button id="deletar" fx:id="btn_deletar" layoutX="474.0" layoutY="315.0" mnemonicParsing="false" onAction="#click_deletar" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #ff5555;" text="Deletar" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tab_cadastrar" text="Cadastrar">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="nome" layoutX="36.0" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" />
+                        <Label layoutX="38.0" layoutY="27.0" text="Nome" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="39.0" layoutY="121.0" text="Email" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField id="codigo" fx:id="email" layoutX="39.0" layoutY="141.0" prefHeight="25.0" prefWidth="150.0" />
+                        <Button id="cadastrar" fx:id="btn_cadastrar" layoutX="473.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_cadastrar" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #50fa7b;" text="Cadastrar" />
+                        <TextField id="input:arg1" fx:id="numero" layoutX="243.0" layoutY="141.0" prefHeight="25.0" prefWidth="150.0" />
+                        <Label id="lbl:arg1" fx:id="lbl_arg1" layoutX="244.0" layoutY="27.0" text="Cpf" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label id="lbl:arg2" fx:id="lbl_arg2" layoutX="243.0" layoutY="121.0" text="Número" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField id="input:arg2" fx:id="cpf" layoutX="243.0" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

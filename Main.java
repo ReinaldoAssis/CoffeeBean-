@@ -153,12 +153,12 @@ public class Main extends Application {
         c.setValidade("12/12/2023");
         c.setPorcao("350ml");
 
-        Usuario u = new Usuario("Joel", "159.753.258-43", "joel@ic.ufal.br", "4002-8922");
+        Usuario u = new Usuario("Joel", "1", "joel@ic.ufal.br", "4002-8922");
 
         ctrl.database.produtoList.add(l);
         ctrl.database.produtoList.add(c);
         ctrl.database.userList.add(u);
 
     }
-
+    
 }

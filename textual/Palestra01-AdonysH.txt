@@ -1,0 +1,27 @@
+Aluno: Adonys Henrique Virgulino da Silva
+Curso: Engenharia de Computação
+
+	Relatório sobre a palestra do Johnny Everson, convidado para falar sobre
+sistemas 24/7.
+
+	Na palestra que ocorreu no dia 22/03, no auditório do IC, o palestrante abordou tópicos essenciais para o futurode um bom 
+profissional na área de programação, entre eles: o bom uso de recursos, velocidade de sistema, processamento paralelo, previsão de 
+erros, sistema de monitoramento de qualidade e custo eficiente.
+	
+	Quando se fala sobre o bom uso de recursos e custo eficiente, temos que ter em mente que pra uma empresa funcionar e pagar
+o salário do dev, é preciso que essa gere lucro, então, uma boa manutenção dos recursos oferecidos pela empresa tanto para equipe, 
+quanto pra quaisquer outros tipos de gastos como com nuvem ou melhoramento de software, é ncessária para garantir o bom
+futuro da empresa.
+	
+	Abordou-se também tópicos simples como velocidade de sistema, o que todos devem saber que é essencial, mas nesse assunto o 
+palestrante foi bem preciso quando falou sobre a utilização de estruturas que se aprendem na faculdade para melhoramento de código e 
+de agilidade num sistema que depende da velocidade para funcionar perfeitamente.
+
+	Dentre todos assuntos tratados no "bate-papo", o que mais me chamou atenção foi o "Sistema de monitoramento de qualidade", que 
+é feito para análise de aspectos e métricas específicas para manter o funcionamento padrão do sistema, como por exemplo, uso de memória 
+do sistema. Ficou aprendido que essa é a parte mais importante quando se é um desenvolvedor de sistemas, pois com o monitoramento da 
+qualidade de um sistema, você garante competitividade, sobrevivência do sistema, custo benefício e lucros. Foi uma palestra que me 
+trouxe muito aprendizado e me abriu os olhos sobre o quão amplo o mercado de desenvolvimento pode ser.
+	
+	
+ 
