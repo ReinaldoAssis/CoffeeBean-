@@ -92,7 +92,7 @@ public class User implements Initializable{
                     if(_u instanceof Usuario){
                         Usuario u = (Usuario) _u;
                         String info_text = "Nome: "+u.getNome()+"\nCpf: "+u.getCpf()+"\nNumero: "+u.getNumero();
-                        info_text += "\nEmail: "+u.getEmail();
+                        info_text += "\nEmail: "+u.getEmail()+"\nFidelidade: " +u.getFidelidade();
                         info.setText(info_text);
                     }
 

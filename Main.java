@@ -158,6 +158,7 @@ public class Main extends Application {
         ctrl.database.produtoList.add(l);
         ctrl.database.produtoList.add(c);
         ctrl.database.userList.add(u);
+        ctrl.database.compra += l.valorDeCompra*l.quantidade + c.valorDeCompra*c.quantidade;
 
     }
     

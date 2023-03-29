@@ -416,7 +416,6 @@ public class DB implements iDB {
 
         user.carrinho.clear();
 
-        Utils.awaitInput();
     }
 
     public void printarCarrinho(Usuario user)
@@ -461,7 +460,8 @@ public class DB implements iDB {
         int i = getProdutoIndexWithCode(codigo);
         if(i == -1){
             System.out.println("Produto não listado no estoque");
-            return false;}
+            return false;
+        }
         Produto p1 = produtoList.get(i);
         user.carrinho.remove(i);
 
@@ -474,7 +474,7 @@ public class DB implements iDB {
         p1.quantidade += quantidade;
         System.out.println(p1.nome + "foi removido do carrinho");*/
 
-        JOptionPane.showMessageDialog(null, p1.nome + " foi removido do carrinho");
+        JOptionPane.showMessageDialog(null, p1.nome + " foi removido do carrinho slkdfjsdlkfjsdklfjsdlfkj");
         return true;
         }
 }

@@ -105,7 +105,7 @@ public class Estoque implements Initializable{
         System.out.println("Codigo ----- "+ ctxt);
         boolean resultado = ctrl.database.removerProduto(ctxt, false);
         if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
-        
+        CarregarLista();
     }
    
 

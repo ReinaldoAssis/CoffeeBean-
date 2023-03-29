@@ -98,8 +98,14 @@ public class Venda {
 
     int qtd = Integer.parseInt(quantidadeStr);
     boolean resultado = ctrl.database.adicionarAoCarrinho(user, ctxt, qtd);
-    if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
+    if(!resultado) {JOptionPane.showMessageDialog(null, "Operação cancelada!");
     }
+    else
+    {
+        JOptionPane.showMessageDialog(null, " Produto adicionado ao carrinho!");
+    }
+    }
+
 
     //alugar livro
     @FXML
@@ -133,6 +139,7 @@ public class Venda {
         System.out.println("Produto: " + p.getNome());
     }
 
+    //adciona todos os produtos a lista   
     listview.getItems().addAll(lista_nomes);
 
 
@@ -145,6 +152,38 @@ public class Venda {
             System.out.println("Codigo da linha selecionada: " + codigoLinhaSelecionada);
         }
     });
+
+        // PARA CORRIGIR
+    // listview.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+    //     @Override
+    //     public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+    //         try{
+    //             String v = listview.getItems().get((Integer) number2);
+                
+    //             String codigo = v.substring(v.indexOf("[") + 1, v.indexOf("]"));
+
+    //             codigoLinhaSelecionada = codigo;
+                
+    //             Produto _p = ctrl.database.getProduto(codigo);
+    //             produto.setText(_p.nome);
+
+    //             if(_p instanceof Livro){
+                    
+    //             }
+    //             else if(_p instanceof Consumivel){
+                    
+    //             }
+
+    //         } catch(Exception e)
+    //         {
+    //             System.out.println("Erro: "+e.getMessage());
+    //         }
+
+    //     }
+    // });
+
+
+    //==============================
     listview1.getItems().clear();
 
     List<String> lista_nomes2 = new ArrayList<String>();

@@ -29,6 +29,12 @@ public class MainView {
 
     @FXML
     private Button btn_venda;
+
+    @FXML
+    void click_logout(ActionEvent event) throws Exception{
+        Controlador ctrl = Controlador.getInstance();
+        ctrl.logout();
+    }
     
 
     @FXML

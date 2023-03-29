@@ -7,7 +7,7 @@ public interface iDB {
     public int getProdutoIndex(String nome);
     public int getProdutoIndexUser(String nome, Usuario user);
     public int getUserIndex(String cpf);
-    public void criarUsuario();
+    public void criarUsuario(Usuario user1);
     public void modificarUsuario(String cpf);
     public void modificarUsuario();
     public void ConsultaFidelidade();

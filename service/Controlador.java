@@ -107,4 +107,14 @@ public class Controlador {
         stage.setResizable(false);
         stage.show();
     }
+
+    public void logout() throws Exception{
+
+        this.root = FXMLLoader.load(getClass().getResource("../telas/login.fxml"));
+        this.stage.setScene(new Scene(root));
+        this.stage.setWidth(640);
+        this.stage.setHeight(480);
+        this.stage.centerOnScreen();
+        this.stage.show();
+    }
 }
