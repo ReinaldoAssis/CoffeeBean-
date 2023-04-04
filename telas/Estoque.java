@@ -263,17 +263,17 @@ public class Estoque implements Initializable{
 
                         if(_p instanceof Livro){
                             Livro l = (Livro) _p;
-                            String info_text = "Quantidade: "+l.getQuantidade()+"\nEditora: "+l.getEditora()+"\nISBN: "+l.getIsbn();
+                            /*String info_text = "Quantidade: "+l.getQuantidade()+"\nEditora: "+l.getEditora()+"\nISBN: "+l.getIsbn();
                             info_text += "\nCusto: "+l.getValorDeCompra()+"\nVenda: "+l.getValorDeVenda();
-                            info_text += "\nCódigo: "+l.getCodigo();
-                            info.setText(info_text);
+                            info_text += "\nCódigo: "+l.getCodigo();*/
+                            info.setText(l.toString());
                         }
                         else if(_p instanceof Consumivel){
                             Consumivel c = (Consumivel) _p;
-                            String info_text = "Quantidade: "+c.getQuantidade()+"\nValidade: "+c.getValidade()+"\nPorção: "+c.getPorcao();
+                            /*String info_text = "Quantidade: "+c.getQuantidade()+"\nValidade: "+c.getValidade()+"\nPorção: "+c.getPorcao();
                             info_text += "\nCusto: "+c.getValorDeCompra()+"\nVenda: "+c.getValorDeVenda();
-                            info_text += "\nCódigo: "+c.getCodigo();
-                            info.setText(info_text);
+                            info_text += "\nCódigo: "+c.getCodigo();*/
+                            info.setText(c.toString());
                         }
 
                     } catch(Exception e)

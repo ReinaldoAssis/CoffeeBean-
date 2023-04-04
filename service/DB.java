@@ -474,7 +474,7 @@ public class DB implements iDB {
         p1.quantidade += quantidade;
         System.out.println(p1.nome + "foi removido do carrinho");*/
 
-        JOptionPane.showMessageDialog(null, p1.nome + " foi removido do carrinho slkdfjsdlkfjsdklfjsdlfkj");
+        JOptionPane.showMessageDialog(null, p1.nome + " foi removido do carrinho");
         return true;
         }
 }

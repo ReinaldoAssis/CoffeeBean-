@@ -33,7 +33,15 @@ public class Consumivel extends Produto {
 
     @Override
     public String toString() {
-        return "Porcao: " + porcao + "\nValidade: " + validade.toString();
+        String str = "";
+        str += "Quantidade: " + this.quantidade + "\n";
+        str += "Validade: " + this.validade + "\n";
+        str += "Porção: " + this.porcao + "\n";
+        str += "Custo: " + this.valorDeCompra + "\n";
+        str += "Venda: " + this.valorDeVenda + "\n";
+        str += "Código: " + this.codigo + "\n";
+
+        return str; 
     }
 
 }

@@ -64,10 +64,12 @@ public class Livro extends Produto {
     @Override
     public String toString() {
         String str = "";
-        str += "ISBN: " + this.isbn + "\n";
-        str += "Autor: " + this.autor + "\n";
+        str += "Quantidade: " + this.quantidade + "\n";
         str += "Editora: " + this.editora + "\n";
-        str += "Paginas: " + this.paginas + "\n";
+        str += "ISBN: " + this.isbn + "\n";
+        str += "Custo: " + this.valorDeCompra + "\n";
+        str += "Venda: " + this.valorDeVenda + "\n";
+        str += "Código: " + this.codigo + "\n";
 
         return str; 
     }

@@ -52,8 +52,8 @@ public class VisCarrinho {
         List<String> lista_nomes = new ArrayList<String>();
 
         for(Produto p : ctrl.database.userList.get(IndexUser).carrinho){
-            lista_nomes.add(p.displayName() + " - " + p.getQuantidade());
-            System.out.println("Produto: "+ p.displayName() + " - " + p.getQuantidade());
+            lista_nomes.add(p.toString());
+            System.out.println(p.toString());
         }
 
         listview.getItems().addAll(lista_nomes);
