@@ -35,7 +35,7 @@ public class Login {
         else{
             mensagem.setTextFill(Color.rgb(255 , 0, 0));
             mensagem.setText("Dados incorretos");
-            JOptionPane.showMessageDialog(null, "Dados incorretos");
+            JOptionPane.showMessageDialog(null, "dados incorretos");
 
         }
 
