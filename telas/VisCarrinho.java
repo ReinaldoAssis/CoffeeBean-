@@ -50,8 +50,10 @@ public class VisCarrinho {
         Controlador ctrl = Controlador.getInstance();
         listview.getItems().clear();
         List<String> lista_nomes = new ArrayList<String>();
+        
+        Usuario u = ctrl.database.userList.get(IndexUser);
 
-        for(Produto p : ctrl.database.userList.get(IndexUser).carrinho){
+        for(Produto p : u.carrinho){
             lista_nomes.add(p.toString());
             System.out.println(p.toString());
         }
@@ -70,7 +72,7 @@ public class VisCarrinho {
     }
     //deletar produto do carrinho
     @FXML
-    void click_del(ActionEvent event) {
+    void click_del(ActionEvent event) throws Exception {
         Controlador ctrl = Controlador.getInstance();
         Usuario user = Controlador.getInstance().database.userList.get(IndexUser);
         
@@ -81,6 +83,11 @@ public class VisCarrinho {
         }
         boolean resultado = ctrl.database.promptRemoverDoCarrinho(user, codigoLinhaSelecionada.trim());
         if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
+        //gambiarra para atualizar a tela
+        //Controlador ctrl = Controlador.getInstance();
+        Stage stage = (Stage) btn_voltar.getScene().getWindow();
+        stage.close();
+        ctrl.tela2_Carrinho();
     }
 
     //finalizar compra

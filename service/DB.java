@@ -39,8 +39,22 @@ public class DB implements iDB {
         return -1;
     }
 
+
     public int getProdutoIndexWithCode(String codigo)
     {
+        for(int i=0; i<produtoList.size(); i++)
+        {
+            if(produtoList.get(i).codigo.equals(codigo))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int getProdutoIndexWithCode(Produto p)
+    {
+        String codigo = p.codigo;
         for(int i=0; i<produtoList.size(); i++)
         {
             if(produtoList.get(i).codigo.equals(codigo))
@@ -103,7 +117,8 @@ public class DB implements iDB {
     {
         //Utils.clearScreen();
 
-        userList.add(User1);                
+        userList.add(User1); 
+
 
     }
 

@@ -69,6 +69,10 @@ public class Produto {
         return l;
     }
 
+    public double calcularDesconto(int fidelidade, int quantidade){
+        return -1;
+    }
+
     @Override
     public String toString() {
         return this.nome + " - ["+this.quantidade+"]";

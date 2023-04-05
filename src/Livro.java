@@ -62,6 +62,24 @@ public class Livro extends Produto {
     }
 
     @Override
+    public double calcularDesconto(int fidelidade, int quantidade) {
+        double desconto = 0;
+        if(fidelidade == 1){
+            desconto = this.valorDeVenda * 0.05;
+        }else if(fidelidade == 2){
+            desconto = this.valorDeVenda * 0.1;
+        }else if(fidelidade == 3){
+            desconto = this.valorDeVenda * 0.15;
+        }else if(fidelidade == 4){
+            desconto = this.valorDeVenda * 0.2;
+        }else if(fidelidade == 5){
+            desconto = this.valorDeVenda * 0.25;
+        }
+        return desconto;
+    }
+    
+
+    @Override
     public String toString() {
         String str = "";
         str += "Quantidade: " + this.quantidade + "\n";

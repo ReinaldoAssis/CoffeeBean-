@@ -32,6 +32,12 @@ public class Consumivel extends Produto {
     }
 
     @Override
+    public double calcularDesconto(int fidelidade, int quantidade) {
+        return this.valorDeVenda * (1 - quantidade/100);
+    }
+    
+
+    @Override
     public String toString() {
         String str = "";
         str += "Quantidade: " + this.quantidade + "\n";

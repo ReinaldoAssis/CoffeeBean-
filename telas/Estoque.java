@@ -261,20 +261,22 @@ public class Estoque implements Initializable{
                         Produto _p = ctrl.database.getProduto(codigo);
                         produto.setText(_p.nome);
 
-                        if(_p instanceof Livro){
-                            Livro l = (Livro) _p;
-                            /*String info_text = "Quantidade: "+l.getQuantidade()+"\nEditora: "+l.getEditora()+"\nISBN: "+l.getIsbn();
-                            info_text += "\nCusto: "+l.getValorDeCompra()+"\nVenda: "+l.getValorDeVenda();
-                            info_text += "\nCódigo: "+l.getCodigo();*/
-                            info.setText(l.toString());
-                        }
-                        else if(_p instanceof Consumivel){
-                            Consumivel c = (Consumivel) _p;
-                            /*String info_text = "Quantidade: "+c.getQuantidade()+"\nValidade: "+c.getValidade()+"\nPorção: "+c.getPorcao();
-                            info_text += "\nCusto: "+c.getValorDeCompra()+"\nVenda: "+c.getValorDeVenda();
-                            info_text += "\nCódigo: "+c.getCodigo();*/
-                            info.setText(c.toString());
-                        }
+                        // if(_p instanceof Livro){
+                        //     Livro l = (Livro) _p;
+                        //     /*String info_text = "Quantidade: "+l.getQuantidade()+"\nEditora: "+l.getEditora()+"\nISBN: "+l.getIsbn();
+                        //     info_text += "\nCusto: "+l.getValorDeCompra()+"\nVenda: "+l.getValorDeVenda();
+                        //     info_text += "\nCódigo: "+l.getCodigo();*/
+                        //     info.setText(l.toString());
+                        // }
+                        // else if(_p instanceof Consumivel){
+                        //     Consumivel c = (Consumivel) _p;
+                        //     /*String info_text = "Quantidade: "+c.getQuantidade()+"\nValidade: "+c.getValidade()+"\nPorção: "+c.getPorcao();
+                        //     info_text += "\nCusto: "+c.getValorDeCompra()+"\nVenda: "+c.getValorDeVenda();
+                        //     info_text += "\nCódigo: "+c.getCodigo();*/
+                        //     info.setText(c.toString());
+                        // }
+
+                        info.setText(_p.toString());
 
                     } catch(Exception e)
                     {
