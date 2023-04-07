@@ -103,7 +103,7 @@ public class Estoque implements Initializable{
         Controlador ctrl = Controlador.getInstance();
         String ctxt = codigoLinhaSelecionada; //codigo da linha selecionada
         System.out.println("Codigo ----- "+ ctxt);
-        boolean resultado = ctrl.database.removerProduto(ctxt, false);
+        boolean resultado = ctrl.database.productDB.deleteItem(ctxt, false);
         if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
         CarregarLista();
         info.setText("");
@@ -117,8 +117,9 @@ public class Estoque implements Initializable{
                     JOptionPane.showMessageDialog(null, "O código do produto não pode ser vazio!");
                 }
                 else if (codigoOriginal.equalsIgnoreCase(k.getCodigo())){
-                    ctrl.database.removerProduto(ctxt, true);
-                    ctrl.database.cadastrarProduto(k);
+                    // ctrl.database.productDB.deleteItem(ctxt, true);
+                    // ctrl.database.productDB.addItem(k);
+                    ctrl.database.productDB.modifyItem(ctxt, k);
                     JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
                     System.out.println(k.codigo+" "+k.nome+" "+k.valorDeCompra+" "+k.valorDeVenda+" "+k.quantidade);
                     
@@ -154,9 +155,9 @@ public class Estoque implements Initializable{
         boolean cadastro = btn_cadastrar.getText().equalsIgnoreCase("Cadastrar");
         
         //verifica se o produto já existe, se sim, exibe uma mensagem de erro
-        if(cadastro && ctrl.database.getProdutoIndexWithCode(this.codigo.getText()) != -1)
+        if(cadastro && ctrl.database.productDB.getItemIndex(this.codigo.getText()) != -1)
         {
-            Produto existente = ctrl.database.getProduto(this.codigo.getText());
+            Produto existente = ctrl.database.productDB.getProduct(this.codigo.getText());
             JOptionPane.showMessageDialog(null, "O produto " + existente.nome + " já existe com esse código!");
             return;
         }
@@ -167,7 +168,7 @@ public class Estoque implements Initializable{
                 Livro l = Produto.toLivro(p); //quase um casting
                 l.setEditora(arg1.getText());
                 l.setIsbn(arg2.getText());
-                if (cadastro) ctrl.database.cadastrarProduto(l);
+                if (cadastro) ctrl.database.productDB.addItem(l);
                 else atualizar_produto(ctrl, l);
 
             }
@@ -176,7 +177,7 @@ public class Estoque implements Initializable{
                     c.setValidade(arg1.getText());
                     c.setPorcao(arg2.getText());
                     System.out.println(c.toString());
-                    if(cadastro) ctrl.database.cadastrarProduto(c);
+                    if(cadastro) ctrl.database.productDB.addItem(c);
                     else atualizar_produto(ctrl, c);
             }
 
@@ -214,7 +215,7 @@ public class Estoque implements Initializable{
         listview.getItems().clear();
         List<String> lista_nomes = new ArrayList<String>();
 
-        for(Produto p : ctrl.database.produtoList){
+        for(Produto p : ctrl.database.productList){
             lista_nomes.add(p.displayName());
             System.out.println("Produto: "+p.displayName());
         }
@@ -260,7 +261,7 @@ public class Estoque implements Initializable{
 
                         codigoLinhaSelecionada = codigo;
                         
-                        Produto _p = ctrl.database.getProduto(codigo);
+                        Produto _p = ctrl.database.productDB.getProduct(codigo);
                         produto.setText(_p.nome);
 
                         // if(_p instanceof Livro){
@@ -298,7 +299,7 @@ public class Estoque implements Initializable{
                             Controlador ctrl = Controlador.getInstance();
 
                             //pega o produto do banco de dados
-                            Produto p = ctrl.database.getProduto(codigo.getText());
+                            Produto p = ctrl.database.productDB.getProduct(codigo.getText());
 
                             //se o produto existir, preenche os campos com os dados do produto
                             if(p != null){

@@ -24,7 +24,7 @@ public class Carrinho {
     @FXML
     private void abrircarr(ActionEvent event) throws Exception {
         String cpf = cpfField.getText();
-        u = Controlador.getInstance().database.getUserIndex(cpf);
+        u = Controlador.getInstance().database.userDB.getItemIndex(cpf);
         if(u == -1){
             JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
         }

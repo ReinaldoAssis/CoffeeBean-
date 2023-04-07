@@ -65,7 +65,7 @@ public class VisCarrinho {
 
             int index = listview.getSelectionModel().getSelectedIndex();
 
-            codigoLinhaSelecionada = ctrl.database.produtoList.get(index).getCodigo();
+            codigoLinhaSelecionada = ctrl.database.productList.get(index).getCodigo();
             System.out.println("Codigo da linha selecionada: " + codigoLinhaSelecionada);
         }
     });
@@ -81,7 +81,7 @@ public class VisCarrinho {
             JOptionPane.showMessageDialog(null, "Nenhum produto selecionado!");
             return;
         }
-        boolean resultado = ctrl.database.promptRemoverDoCarrinho(user, codigoLinhaSelecionada.trim());
+        boolean resultado = ctrl.database.userDB.removeFromCart(user, codigoLinhaSelecionada.trim());
         if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
         //gambiarra para atualizar a tela
         //Controlador ctrl = Controlador.getInstance();
@@ -95,7 +95,7 @@ public class VisCarrinho {
     void click_fin(ActionEvent event) {
         Controlador ctrl = Controlador.getInstance();
         Usuario user = Controlador.getInstance().database.userList.get(IndexUser);
-        ctrl.database.finalizarCompra(user);
+        ctrl.database.userDB.completePurchase(user);
         //fechar janelas
         Stage stage = (Stage) btn_fin.getScene().getWindow();
         stage.close();

@@ -155,8 +155,8 @@ public class Main extends Application {
 
         Usuario u = new Usuario("Joel", "1", "joel@ic.ufal.br", "4002-8922");
 
-        ctrl.database.produtoList.add(l);
-        ctrl.database.produtoList.add(c);
+        ctrl.database.productList.add(l);
+        ctrl.database.productList.add(c);
         ctrl.database.userList.add(u);
         ctrl.database.compra += l.valorDeCompra*l.quantidade + c.valorDeCompra*c.quantidade;
 

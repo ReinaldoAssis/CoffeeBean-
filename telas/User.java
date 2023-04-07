@@ -86,7 +86,7 @@ public class User implements Initializable{
 
                     codigoLinhaSelecionada = cpf;
                     
-                    Usuario _u = ctrl.database.getUser(cpf);
+                    Usuario _u = ctrl.database.userDB.getUser(cpf);
                     info.setText(_u.nome);
 
                     if(_u instanceof Usuario){
@@ -113,7 +113,7 @@ public class User implements Initializable{
                         Controlador ctrl = Controlador.getInstance();
 
                         //pega o produto do banco de dados
-                        Usuario u = ctrl.database.getUser(cpf.getText());
+                        Usuario u = ctrl.database.userDB.getUser(cpf.getText());
 
                         //se o produto existir, preenche os campos com os dados do produto
                         if(u != null){
@@ -150,8 +150,8 @@ public class User implements Initializable{
                 JOptionPane.showMessageDialog(null, "O cpf do usuário não pode ser vazio!");
             }
             else if (codigoOriginal.equalsIgnoreCase(u.getCpf())){
-                ctrl.database.removerUsuario(ctxt);
-                ctrl.database.criarUsuario(u);
+                ctrl.database.userDB.deleteItem(ctxt, false);
+                ctrl.database.userDB.addItem(u);
                 JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");
                 System.out.println(u.nome+" "+u.cpf+" "+u.numero+" "+u.email);
 
@@ -193,14 +193,14 @@ public class User implements Initializable{
 
         System.out.println(this.cpf.getText());
 
-        if(cadastro && ctrl.database.getUserIndex(this.cpf.getText()) != -1)
+        if(cadastro && ctrl.database.userDB.getItemIndex(this.cpf.getText()) != -1)
         {
             JOptionPane.showMessageDialog(null, "Usuário do cpf " + this.cpf.getText() + " já foi cadastrado!");
             return;
         }
         else
         {
-            if (cadastro) ctrl.database.criarUsuario(u);
+            if (cadastro) ctrl.database.userDB.addItem(u);
             JOptionPane.showMessageDialog(null, "Usuário do cpf " + this.cpf.getText() + " foi cadastrado com sucesso!");
             
         }
@@ -220,7 +220,7 @@ public class User implements Initializable{
         System.out.println("Codigo ----- "+ cpf);
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja remover o usuário ?", "Remover Usuário", JOptionPane.YES_NO_OPTION);
         if(opcao == JOptionPane.YES_OPTION){
-            ctrl.database.removerUsuario(cpf);
+            ctrl.database.userDB.deleteItem(cpf, true);
             JOptionPane.showMessageDialog(null, "Usuário apagado!");
         }
         else{

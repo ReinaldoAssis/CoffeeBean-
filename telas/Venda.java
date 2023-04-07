@@ -97,7 +97,7 @@ public class Venda {
     }
 
     int qtd = Integer.parseInt(quantidadeStr);
-    boolean resultado = ctrl.database.adicionarAoCarrinho(user, ctxt, qtd);
+    boolean resultado = ctrl.database.userDB.addToCart(user, ctxt, qtd);
     if(!resultado) {JOptionPane.showMessageDialog(null, "Operação cancelada!");
     }
     else
@@ -120,7 +120,7 @@ public class Venda {
         JOptionPane.showMessageDialog(null, "Nenhum produto selecionado!");
         return;
         }
-         boolean resultado = ctrl.database.promptAlugarLivro(user, ctxt);
+         boolean resultado = ctrl.database.userDB.rentBook(user, ctxt);
         if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
     }
 
@@ -134,7 +134,7 @@ public class Venda {
 
     List<String> lista_nomes = new ArrayList<String>();
 
-    for (Produto p : ctrl.database.produtoList) {
+    for (Produto p : ctrl.database.productList) {
         lista_nomes.add(p.getNome() + " - " + p.getValorDeVenda());
         System.out.println("Produto: " + p.getNome());
     }
@@ -148,7 +148,7 @@ public class Venda {
 
             int index = listview.getSelectionModel().getSelectedIndex();
   
-            codigoLinhaSelecionada = ctrl.database.produtoList.get(index).getCodigo();
+            codigoLinhaSelecionada = ctrl.database.productList.get(index).getCodigo();
             System.out.println("Codigo da linha selecionada: " + codigoLinhaSelecionada);
         }
     });
@@ -188,7 +188,7 @@ public class Venda {
 
     List<String> lista_nomes2 = new ArrayList<String>();
 
-    for (Produto p : ctrl.database.produtoList) {
+    for (Produto p : ctrl.database.productList) {
         if(p.getClass() == Livro.class){
         lista_nomes2.add(p.getNome() + " - " + p.getValorDeVenda());
         System.out.println("Produto: " + p.getNome());
@@ -203,7 +203,7 @@ public class Venda {
        
             int index = listview1.getSelectionModel().getSelectedIndex();
             
-            codigoLinhaSelecionada = ctrl.database.produtoList.get(index).getCodigo();
+            codigoLinhaSelecionada = ctrl.database.productList.get(index).getCodigo();
             System.out.println("Codigo da linha selecionada: " + codigoLinhaSelecionada);
         }
     });
