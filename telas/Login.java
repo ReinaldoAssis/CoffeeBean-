@@ -29,7 +29,6 @@ public class Login implements Initializable{
 
     @FXML
     private void validacao(ActionEvent Joel) throws Exception{
-
        
         if(login.getText().equals("admin") && senha.getText().equals("admin")){
            System.out.println("Validado!");
@@ -50,6 +49,10 @@ public class Login implements Initializable{
 
     @Override
     public void initialize(java.net.URL arg0, java.util.ResourceBundle arg1) {
+
+        login.setText("admin");
+        senha.setText("admin");
+
         panel.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
