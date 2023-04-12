@@ -267,7 +267,7 @@ public class Estoque implements Initializable{
 
                     } catch(Exception e)
                     {
-                        //throw new RuntimeException("Erro: "+e.getMessage());
+                        throw new RuntimeException("Erro: "+e.getMessage());
                     }
 
                 }

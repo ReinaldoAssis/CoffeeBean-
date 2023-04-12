@@ -158,7 +158,7 @@ public class UserDB implements iUserDB {
         Produto p1 = db.productList.get(i);
         user.carrinho.remove(i);
 
-        JOptionPane.showMessageDialog(null, p1.nome + " foi removido do carrinho");
+        JOptionPane.showMessageDialog(null, "Produto foi removido do carrinho.");
         return true;
     }
 

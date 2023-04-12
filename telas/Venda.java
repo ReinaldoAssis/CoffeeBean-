@@ -98,7 +98,7 @@ public class Venda {
 
     int qtd = Integer.parseInt(quantidadeStr);
     boolean resultado = ctrl.database.userDB.addToCart(user, ctxt, qtd);
-    if(!resultado) {JOptionPane.showMessageDialog(null, "Operação cancelada!");
+    if(!resultado) {JOptionPane.showMessageDialog(null, "Operação cancelada, estoque insuficiente!");
     }
     else
     {
