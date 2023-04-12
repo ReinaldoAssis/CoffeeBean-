@@ -17,7 +17,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyEvent;
 import service.Controlador;
 import src.Usuario;
@@ -98,7 +97,7 @@ public class User implements Initializable{
 
                 } catch(Exception e)
                 {
-                    System.out.println("Erro: "+e.getMessage());
+                    throw new RuntimeException("Erro: "+e.getMessage());
                 }
 
             }
@@ -107,15 +106,14 @@ public class User implements Initializable{
         cpf.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                //System.out.println(event.toString());
                 if(event.getCode().toString().equalsIgnoreCase("ENTER")){
                     try{
                         Controlador ctrl = Controlador.getInstance();
 
-                        //pega o produto do banco de dados
+                        //pega o usuário do banco de dados
                         Usuario u = ctrl.database.userDB.getUser(cpf.getText());
 
-                        //se o produto existir, preenche os campos com os dados do produto
+                        //se o usuário existir, preenche os campos com os dados do usuário
                         if(u != null){
                             nome.setText(u.getNome());
                             cpf.setText(u.getCpf()+"");
@@ -134,7 +132,7 @@ public class User implements Initializable{
 
                     } catch(Exception e)
                     {
-                        System.out.println("Erro: "+e.getMessage());
+                        throw new RuntimeException("Erro: "+e.getMessage());
                     }
                 }
             }
@@ -143,7 +141,7 @@ public class User implements Initializable{
       CarregarLista();
 }
 
-
+    
     private void atualizar_usuario(Controlador ctrl, Usuario u){
     String ctxt = cpf.getText();
             if(ctxt.equalsIgnoreCase("")){

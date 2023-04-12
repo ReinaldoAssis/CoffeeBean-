@@ -186,13 +186,10 @@ public class Estoque implements Initializable{
                 JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
                 return;
             }
-
-            
-
-
-            
+    
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, "Algo deu errado :(\n"+e.getMessage());
+            throw new RuntimeException("Erro: "+e.getMessage());
 
         } finally{
             codigo.setText("");
@@ -264,26 +261,13 @@ public class Estoque implements Initializable{
                         Produto _p = ctrl.database.productDB.getProduct(codigo);
                         produto.setText(_p.nome);
 
-                        // if(_p instanceof Livro){
-                        //     Livro l = (Livro) _p;
-                        //     /*String info_text = "Quantidade: "+l.getQuantidade()+"\nEditora: "+l.getEditora()+"\nISBN: "+l.getIsbn();
-                        //     info_text += "\nCusto: "+l.getValorDeCompra()+"\nVenda: "+l.getValorDeVenda();
-                        //     info_text += "\nCódigo: "+l.getCodigo();*/
-                        //     info.setText(l.toString());
-                        // }
-                        // else if(_p instanceof Consumivel){
-                        //     Consumivel c = (Consumivel) _p;
-                        //     /*String info_text = "Quantidade: "+c.getQuantidade()+"\nValidade: "+c.getValidade()+"\nPorção: "+c.getPorcao();
-                        //     info_text += "\nCusto: "+c.getValorDeCompra()+"\nVenda: "+c.getValorDeVenda();
-                        //     info_text += "\nCódigo: "+c.getCodigo();*/
-                        //     info.setText(c.toString());
-                        // }
-
+                        //Polimorfismo aplicado aqui
+                        produto.setText(_p.nome);
                         info.setText(_p.toString());
 
                     } catch(Exception e)
                     {
-                        System.out.println("Erro: "+e.getMessage());
+                        //throw new RuntimeException("Erro: "+e.getMessage());
                     }
 
                 }
@@ -330,13 +314,13 @@ public class Estoque implements Initializable{
 
                         } catch(Exception e)
                         {
-                            System.out.println("Erro: "+e.getMessage());
+                            throw new RuntimeException("Erro: "+e.getMessage());
                         }
                     }
                 }
             });
           
-          CarregarLista();
+        CarregarLista();
     }
 
 }

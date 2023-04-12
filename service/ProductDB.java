@@ -47,7 +47,6 @@ public class ProductDB implements iDB {
         int i = getItemIndex(codigo);
 
         if(force){  
-           //JOptionPane.showMessageDialog(null, "O produto "+ produtoList.get(i).nome+ " foi removido.");
             System.out.println("O produto "+ db.productList.get(i).nome+ " foi removido");
             db.productList.remove(i);
             return true;
