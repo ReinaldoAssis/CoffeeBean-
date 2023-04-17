@@ -75,7 +75,7 @@ public class Venda {
 
     //adicionar ao carrinho
     @FXML
-    void click_add(ActionEvent event) {
+    void click_add(ActionEvent event) throws Exception {
 
     Controlador ctrl = Controlador.getInstance();
     String ctxt = codigoLinhaSelecionada; //codigo da linha selecionada
@@ -86,11 +86,17 @@ public class Venda {
     String quantidadeStr = quantidade.getText();
     System.out.println("Quantidade ----- " + quantidadeStr);
     
-   if (quantidadeStr.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Quantidade não informada!");
-        return;
+    try
+    {
+        Integer.parseInt(quantidadeStr);
     }
-    else if(ctxt == "")
+
+    catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Quantidade não é um número válido!");
+            throw new Exception("Quantidade não  é um número válido!");
+    }
+    
+    if(ctxt == "")
     {
         JOptionPane.showMessageDialog(null, "Nenhum produto selecionado!");
         return;

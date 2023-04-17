@@ -84,7 +84,6 @@ public class VisCarrinho {
         boolean resultado = ctrl.database.userDB.removeFromCart(user, codigoLinhaSelecionada.trim());
         if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
         //gambiarra para atualizar a tela
-        //Controlador ctrl = Controlador.getInstance();
         Stage stage = (Stage) btn_voltar.getScene().getWindow();
         stage.close();
         ctrl.tela2_Carrinho();

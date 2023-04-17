@@ -170,10 +170,22 @@ public class User implements Initializable{
             }
 }
 
+public void IsStringNumeric(String str) throws Exception{
+    try{
+        Integer.parseInt(str);
+    }
+    catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Os campos Número/Cpf devem ser compostos apenas por números!");
+        throw new Exception("Os campos Número/Cpf devem ser compostos apenas por números!");
+    }
+}
+
     @FXML
+    void click_cadastrar(ActionEvent e) throws Exception{
 
-    void click_cadastrar(ActionEvent e){
-
+        IsStringNumeric(cpf.getText());
+        IsStringNumeric(numero.getText());
+        
         u.setNome(nome.getText());
         u.setCpf(cpf.getText());
         u.setEmail(email.getText());
