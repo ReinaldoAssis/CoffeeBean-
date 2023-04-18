@@ -221,6 +221,8 @@ public class Estoque implements Initializable{
 
     }
 
+
+    //Code smell: long method
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

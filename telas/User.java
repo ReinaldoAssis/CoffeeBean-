@@ -63,6 +63,7 @@ public class User implements Initializable{
     private String codigoOriginal = "";
 
 
+    //code smell: long method
     @Override
     public void initialize(java.net.URL arg0, java.util.ResourceBundle arg1) {
 

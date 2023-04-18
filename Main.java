@@ -149,6 +149,7 @@ public class Main extends Application {
         l.setEditora("Rocco");
         l.setIsbn("978-8532530783");
 
+        //code smell: long parameter list
         Consumivel c = new Consumivel( "2","Coca-Cola", 10, 10, 300);
         c.setValidade("12/12/2023");
         c.setPorcao("350ml");

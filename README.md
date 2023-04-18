@@ -6,9 +6,14 @@ Proposta de projeto para a disciplina de Projeto de Software lecionada pelo prof
 
 ![Funcionalidades](https://i.ibb.co/sCG8Xxz/image.png)
 
+# Code Smells
+
+- Long metrod em [Estoque.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/telas/Estoque.java) e [User.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/telas/User.java), método: initialize.
+- Long parameter list em [Main.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/main.java), parametros para as classes Livro e Consumivel.
+
 # Implementações POO
 
-Herança e polimorfismo implementadas em [Produto.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/Produto.java) sendo suas subclasses [Livro.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/Livro.java) e [Consumivel.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/Consumivel.java). Interface implementada em [iDB.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/iDB.java).
+Herança e polimorfismo implementadas em [Produto.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/src/Produto.java) sendo suas subclasses [Livro.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/src/Livro.java) e [Consumivel.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/src/Consumivel.java). Interface implementada em [iDB.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/service/interfaces/iDB.java).
 
 # Integrantes
 
