@@ -8,7 +8,7 @@ Proposta de projeto para a disciplina de Projeto de Software lecionada pelo prof
 
 # Code Smells
 
-- Long metrod em [Estoque.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/telas/Estoque.java) e [User.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/telas/User.java), método: initialize.
+- Long method em [Estoque.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/telas/Estoque.java) e [User.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/telas/User.java), método: initialize.
 - Long parameter list em [Main.java](https://github.com/ReinaldoAssis/CoffeeBeans2.0/blob/main/Main.java), parametros para as classes Livro e Consumivel.
 
 # Implementações POO
