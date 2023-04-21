@@ -3,6 +3,8 @@ package src;
 import javafx.scene.control.TextField;
 import service.interfaces.iProdutoVisitor;
 
+// This class is used to set the fields of the GUI
+// It uses the visitor pattern to solve bad code smell
 public class ProdutoFieldVisitor implements iProdutoVisitor {
     
     private TextField arg1;
