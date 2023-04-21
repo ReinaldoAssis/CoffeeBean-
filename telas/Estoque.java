@@ -98,48 +98,51 @@ public class Estoque implements Initializable{
 
     }
 
-    @FXML
-    void click_deletar(ActionEvent event) {
-        Controlador ctrl = Controlador.getInstance();
-        String ctxt = codigoLinhaSelecionada; //codigo da linha selecionada
-        System.out.println("Codigo ----- "+ ctxt);
-        boolean resultado = ctrl.database.productDB.deleteItem(ctxt, false);
-        if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
-        CarregarLista();
+    private void resetInfoLabels(){
         info.setText("");
         produto.setText("Produto");
     }
+
+    @FXML
+    void click_deletar(ActionEvent event) {
+        Controlador ctrl = Controlador.getInstance();
+        boolean resultado = ctrl.database.productDB.deleteItem(codigoLinhaSelecionada, false);
+
+        if(!resultado) JOptionPane.showMessageDialog(null, "Operação cancelada!");
+        
+        CarregarLista();
+        
+        resetInfoLabels();
+    }
+
    
 
     private void atualizar_produto(Controlador ctrl, Produto k){
         String ctxt = codigo.getText();
-                if(ctxt.equalsIgnoreCase("")){
-                    JOptionPane.showMessageDialog(null, "O código do produto não pode ser vazio!");
-                }
-                else if (codigoOriginal.equalsIgnoreCase(k.getCodigo())){
-                    // ctrl.database.productDB.deleteItem(ctxt, true);
-                    // ctrl.database.productDB.addItem(k);
-                    ctrl.database.productDB.modifyItem(ctxt, k);
-                    JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
-                    System.out.println(k.codigo+" "+k.nome+" "+k.valorDeCompra+" "+k.valorDeVenda+" "+k.quantidade);
-                    
-                    codigoOriginal = "";
+        if(ctxt.equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "O código do produto não pode ser vazio!");
+        }
+        else if (codigoOriginal.equalsIgnoreCase(k.getCodigo())){
+            ctrl.database.productDB.modifyItem(ctxt, k);
+            JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
+            
+            codigoOriginal = "";
 
-                    btn_cadastrar.setText("Cadastrar");
-                    btn_cadastrar.setStyle("-fx-background-color: #50fa7b; ");
+            btn_cadastrar.setText("Cadastrar");
+            btn_cadastrar.setStyle("-fx-background-color: #50fa7b; ");
 
-                    codigo.setText("");
-                    nome.setText("");
-                    custo.setText("");
-                    venda.setText("");
-                    arg1.setText("");
-                    arg2.setText("");
-                    quantidade.setText("");
+            codigo.setText("");
+            nome.setText("");
+            custo.setText("");
+            venda.setText("");
+            arg1.setText("");
+            arg2.setText("");
+            quantidade.setText("");
 
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "O código do produto não pode ser alterado!");
-                }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "O código do produto não pode ser alterado!");
+        }
     }
 
     @FXML
@@ -149,7 +152,6 @@ public class Estoque implements Initializable{
         p.setValorDeCompra(Double.parseDouble(custo.getText()));
         p.setValorDeVenda(Double.parseDouble(venda.getText()));
         p.setQuantidade(Integer.parseInt(quantidade.getText()));
-        //p.set(tipo.getValue());
         
         Controlador ctrl = Controlador.getInstance();
         boolean cadastro = btn_cadastrar.getText().equalsIgnoreCase("Cadastrar");
