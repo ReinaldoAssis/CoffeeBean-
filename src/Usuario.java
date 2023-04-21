@@ -16,6 +16,8 @@ public class Usuario {
     public List<Produto> carrinho;
     public List<Produto> alugados;
 
+    //TODO: usuario servindo como data class?
+
     public Usuario(){}
 
     public Usuario(String _nome, String _CPF, String _email, String _numero) {
@@ -28,72 +30,6 @@ public class Usuario {
         carrinho = new ArrayList<Produto>();
         alugados = new ArrayList<Produto>();
         this.setFidelidade(0);
-    }
-
-
-    public void estadoAtual(){
-        System.out.println("-----------------");
-        System.out.println("Nome: " + this.getNome());
-        System.out.println("CPF: " + this.getCpf());
-        System.out.println("Email: " + this.getEmail());
-        System.out.println("Numero: " + this.getNumero());
-        System.out.println("Status da conta: " + this.isStatus());
-        System.out.println("-----------------");
-
-        Utils.awaitInput();
-
-    }
-
-
-
-    public void criarConta(){
-        System.out.println("-----------------");
-        Scanner Leitor = new Scanner(System.in);
-        System.out.println("Digite seu nome:");
-        String Usuario = Leitor.nextLine();
-        setNome(Usuario);
-        System.out.println("Digite seu CPF:");
-        String Cpf = Leitor.nextLine();
-        setCpf(Cpf);
-        System.out.println("Digite seu Email:");
-        String Email = Leitor.nextLine();
-        setEmail(Email);
-        System.out.println("Digite seu numero:");
-        String Numero = Leitor.nextLine();
-        setNumero(Numero);
-
-        setFidelidade();
-        setStatus(true);
-
-        Utils.awaitInput();
-    }
-
-    public void modificarDados(){
-        System.out.println("-----------------");
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Qual dado você quer modificar? ");
-        System.out.println("Opções: CPF, Nome, Email e Numero");
-        String Dado = scanner.nextLine();
-        System.out.println("Digite o novo dado: ");
-        String novodado = scanner.next();
-
-        if(Dado.equalsIgnoreCase("CPF")){
-            setCpf(novodado);
-            //System.out.println(novodado);
-        } else if (Dado.equalsIgnoreCase("Nome")) {
-            setNome(novodado);
-            //System.out.println(novodado);
-        } else if (Dado.equalsIgnoreCase("Email")) {
-            setEmail(novodado);
-            //System.out.println(novodado);
-        }else if (Dado.equalsIgnoreCase("Numero")){
-            setNumero(novodado);
-            //System.out.println(novodado);
-        }else {
-            System.out.println("Tente novamente. Opções de dados: CPF, Nome, Email, Numero.");
-        }
-
-        Utils.awaitInput();
     }
 
     public String displayName(){
