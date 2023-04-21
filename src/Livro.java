@@ -1,6 +1,7 @@
 package src;
 import java.util.List;
 
+import service.Utils;
 import service.interfaces.iProdutoVisitor;
 
 public class Livro extends Produto {
@@ -26,6 +27,7 @@ public class Livro extends Produto {
     @Override
     public void accept(iProdutoVisitor visitor){
         visitor.visit(this);
+        Utils.debugBox("Livro.accept() called", "true");
     }
 
     public void setAutor(String autor) {

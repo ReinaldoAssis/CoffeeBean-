@@ -23,9 +23,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import service.Controlador;
+import service.Utils;
 import src.Consumivel;
 import src.Livro;
 import src.Produto;
+import src.ProdutoCadastrarVisitor;
 import src.ProdutoFieldVisitor;
 
 public class Estoque implements Initializable{
@@ -146,7 +148,7 @@ public class Estoque implements Initializable{
         }
     }
 
-    private boolean applyCadastrarConditions(boolean cadastro, Controlador ctrl)
+    private boolean cadastrarConditions(boolean cadastro, Controlador ctrl)
     {
         //verifica se o produto já existe, se sim, exibe uma mensagem de erro
         if(cadastro && ctrl.database.productDB.getItemIndex(this.codigo.getText()) != -1)
@@ -169,36 +171,38 @@ public class Estoque implements Initializable{
         Controlador ctrl = Controlador.getInstance();
         boolean cadastro = btn_cadastrar.getText().equalsIgnoreCase("Cadastrar");
         
-        if (applyCadastrarConditions(cadastro, ctrl) == false)
+        if (cadastrarConditions(cadastro, ctrl) == false)
             return;
 
         try{
             //verifica se o produto é um livro ou um consumível 
-            if(tipo.getValue().equalsIgnoreCase("livro")){
-                Livro l = Produto.toLivro(p); //quase um casting
-                l.setEditora(arg1.getText());
-                l.setIsbn(arg2.getText());
-                if (cadastro) ctrl.database.productDB.addItem(l);
-                else atualizar_produto(ctrl, l);
+            
+            System.out.println("Tentando - Tipo: "+tipo.getValue());
 
-            }
-            else if (tipo.getValue().equalsIgnoreCase("consumivel")){
-                    Consumivel c = Produto.toConsumivel(p); //quase um casting
-                    c.setValidade(arg1.getText());
-                    c.setPorcao(arg2.getText());
-                    System.out.println(c.toString());
-                    if(cadastro) ctrl.database.productDB.addItem(c);
-                    else atualizar_produto(ctrl, c);
+            if(Utils.isStrEqual(tipo.getValue(), "Livro")) p = Produto.toLivro(p);
+            else p = Produto.toConsumivel(p);
+
+            p.accept(new ProdutoCadastrarVisitor(arg1.getText(), arg2.getText(), cadastro));
+            
+            if (!cadastro) {
+                atualizar_produto(ctrl, p);
+                return;
             }
 
-            if(cadastro)
+            if(cadastro && ctrl.database.productDB.checkExistence(p.getCodigo()))
             {
-                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+                Utils.successBox("Produto cadastrado com sucesso!");
+                return;
+            }
+            else
+            {
+                Utils.errorBox("Erro ao cadastrar o produto!", "Algo deu errado :(");
+                Utils.debugBox("Tipo", tipo.getValue(), "Código", codigo.getText(), "Nome", nome.getText(), "Custo", custo.getText(), "Venda", venda.getText(), "Quantidade", quantidade.getText(), "Arg1", arg1.getText(), "Arg2", arg2.getText());
                 return;
             }
     
         } catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Algo deu errado :(\n"+e.getMessage());
+            Utils.errorBox(e.getMessage(),"Algo deu errado :(");
             throw new RuntimeException("Erro: "+e.getMessage());
 
         } finally{
