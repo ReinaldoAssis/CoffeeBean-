@@ -167,12 +167,18 @@ public class UserDB implements iUserDB {
         int i = db.productDB.getItemIndex(bookCode);
        
         Produto p = db.productList.get(i);
-        //TODO: tratar caso não seja um livro!
+
         if(p instanceof Livro)
         {
             user.alugados.add(p);
             user.fidelidade += 1;
         }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "O produto " + p.nome + " não é um livro e portanto não pode ser alugado.");
+            return false;
+        }
+
         JOptionPane.showMessageDialog(null, "Livro alugado por "+ user.nome+", valor: "+ p.valorDeVenda*0.3);
         System.out.println("Livro alugado por "+ user.nome+", valor: "+ p.valorDeVenda*0.3);
         db.venda += p.valorDeVenda*0.3;
