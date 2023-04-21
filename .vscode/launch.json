@@ -15,7 +15,7 @@
       "name": "Main",
       "request": "launch",
       "mainClass": "Main",
-      "projectName": "CoffeeBeans2.0_3912575b",
+      "projectName": "CoffeeBeans3.0_39125b1c",
       "vmArgs": "--module-path \"./JavaFX/javafx-sdk-19.0.2.1/lib\" --add-modules javafx.controls,javafx.fxml"
     }
   ]
