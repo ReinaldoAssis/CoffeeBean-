@@ -146,6 +146,18 @@ public class Estoque implements Initializable{
         }
     }
 
+    private boolean applyCadastrarConditions(boolean cadastro, Controlador ctrl)
+    {
+        //verifica se o produto já existe, se sim, exibe uma mensagem de erro
+        if(cadastro && ctrl.database.productDB.getItemIndex(this.codigo.getText()) != -1)
+        {
+            Produto existente = ctrl.database.productDB.getProduct(this.codigo.getText());
+            JOptionPane.showMessageDialog(null, "O produto " + existente.nome + " já existe com esse código!");
+            return false;
+        }
+        return true;
+    }
+
     @FXML
     void click_cadastrar(ActionEvent event) {
         p.setCodigo(codigo.getText());
@@ -157,13 +169,8 @@ public class Estoque implements Initializable{
         Controlador ctrl = Controlador.getInstance();
         boolean cadastro = btn_cadastrar.getText().equalsIgnoreCase("Cadastrar");
         
-        //verifica se o produto já existe, se sim, exibe uma mensagem de erro
-        if(cadastro && ctrl.database.productDB.getItemIndex(this.codigo.getText()) != -1)
-        {
-            Produto existente = ctrl.database.productDB.getProduct(this.codigo.getText());
-            JOptionPane.showMessageDialog(null, "O produto " + existente.nome + " já existe com esse código!");
+        if (applyCadastrarConditions(cadastro, ctrl) == false)
             return;
-        }
 
         try{
             //verifica se o produto é um livro ou um consumível 
