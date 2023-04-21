@@ -4,8 +4,14 @@ import javax.swing.JOptionPane;
 
 public class Utils {
 
+    public static boolean debug = true;
+
     public static void messageBox(String message) {
         JOptionPane.showMessageDialog(null, message);
+    }
+
+    public static void messageBox(String message, String title) {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static boolean yesNoBox(String message, String title) {
@@ -19,6 +25,18 @@ public class Utils {
 
     public static void successBox(String message) {
         JOptionPane.showMessageDialog(null, message, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void debugBox(String ...info)
+    {
+        if(!debug) return;
+        String message = "";
+        for(int i = 0; i < info.length; i++)
+        {
+            message += info[i] + ": ";
+            message += info[++i] + "\n";
+        }
+        messageBox(message, "Debug");
     }
 
 }
