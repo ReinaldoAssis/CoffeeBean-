@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Utils {
 
-    public static boolean debug = true;
+    private static boolean debug = true;
 
     public static void messageBox(String message) {
         JOptionPane.showMessageDialog(null, message);
