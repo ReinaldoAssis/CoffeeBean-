@@ -1,4 +1,7 @@
 package src;
+
+import service.interfaces.iProdutoVisitor;
+
 public class Produto {
 
     public String codigo;
@@ -6,19 +9,21 @@ public class Produto {
     public int quantidade;
     public double valorDeCompra;
     public double valorDeVenda;
-
-
+    
     public Produto(){}
-
+    
     public Produto(String _codigo, String _nome, int _quantidade, double _valorDeCompra, double _valorDeVenda) {
         this.codigo = _codigo;
         this.nome = _nome;
         this.quantidade = _quantidade;
-        //this.tipo = _tipo;
         this.valorDeCompra = _valorDeCompra;
         this.valorDeVenda = _valorDeVenda;
     }
 
+    public void accept(iProdutoVisitor visitor){
+        // do nothing
+    }
+    
     public String getCodigo() {
         return codigo;
     }

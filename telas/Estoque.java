@@ -26,6 +26,7 @@ import service.Controlador;
 import src.Consumivel;
 import src.Livro;
 import src.Produto;
+import src.ProdutoFieldVisitor;
 
 public class Estoque implements Initializable{
 
@@ -271,16 +272,8 @@ public class Estoque implements Initializable{
                             custo.setText(p.getValorDeCompra()+"");
                             venda.setText(p.getValorDeVenda()+"");
                             quantidade.setText(p.getQuantidade()+"");
-                            if(p instanceof Livro){
-                                Livro l = (Livro) p;
-                                arg1.setText(l.getEditora());
-                                arg2.setText(l.getIsbn());
-                            }
-                            else if(p instanceof Consumivel){
-                                Consumivel c = (Consumivel) p;
-                                arg1.setText(c.getValidade());
-                                arg2.setText(c.getPorcao());
-                            }
+
+                            p.accept(new ProdutoFieldVisitor(arg1, arg2));
 
                             codigoOriginal = codigo.getText();
 

@@ -1,6 +1,8 @@
 package src;
 import java.sql.Date;
 
+import service.interfaces.iProdutoVisitor;
+
 public class Consumivel extends Produto {
     
     private String porcao;
@@ -10,9 +12,13 @@ public class Consumivel extends Produto {
         this.codigo = _codigo;
         this.nome = _nome;
         this.quantidade = _quantidade;
-        //this.tipo = _tipo;
         this.valorDeCompra = _valorDeCompra;
         this.valorDeVenda = _valorDeVenda;
+    }
+
+    @Override
+    public void accept(iProdutoVisitor visitor){
+        visitor.visit(this);
     }
 
     public String getPorcao() {

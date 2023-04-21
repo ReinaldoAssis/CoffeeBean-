@@ -1,6 +1,8 @@
 package src;
 import java.util.List;
 
+import service.interfaces.iProdutoVisitor;
+
 public class Livro extends Produto {
     
 
@@ -19,6 +21,11 @@ public class Livro extends Produto {
         //this.tipo = _tipo;
         this.valorDeCompra = _valorDeCompra;
         this.valorDeVenda = _valorDeVenda;
+    }
+
+    @Override
+    public void accept(iProdutoVisitor visitor){
+        visitor.visit(this);
     }
 
     public void setAutor(String autor) {
