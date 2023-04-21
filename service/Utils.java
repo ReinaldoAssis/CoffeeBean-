@@ -26,6 +26,10 @@ public class Utils {
     public static void successBox(String message) {
         JOptionPane.showMessageDialog(null, message, "Success", JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    public static boolean isStrEqual(String str1, String str2) {
+        return str1.equalsIgnoreCase(str2);
+    }
 
     public static void debugBox(String ...info)
     {
