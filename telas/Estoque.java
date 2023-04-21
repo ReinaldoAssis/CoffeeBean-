@@ -221,19 +221,9 @@ public class Estoque implements Initializable{
 
     }
 
-
-    //Code smell: long method
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        Controlador ctrl = Controlador.getInstance();
-        System.out.println("Compras " + ctrl.database.compra);
-
-        // TODO Auto-generated method stub
-        tipo.getItems().addAll("Livro", "Consumivel");
-        tipo.setValue("Livro");
-
-        //responsável por mudar as labels de acordo com o tipo de produto selecionado
+    //responsável por mudar as labels de acordo com o tipo de produto selecionado
+    private void updateLabelsWithProductType()
+    {
         tipo.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
@@ -248,80 +238,105 @@ public class Estoque implements Initializable{
               }
             }
           });
+    }
 
-          //responsável por atualizar a label info de acordo com o produto selecionado
-            listview.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-                @Override
-                public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+    private void initializeTipoFieldValues()
+    {
+        tipo.getItems().addAll("Livro", "Consumivel");
+        tipo.setValue("Livro");
+    }
+
+    private boolean isENTERKey(KeyEvent e)
+    {
+        return e.getCode().toString().equalsIgnoreCase("ENTER");
+    }
+
+    //checa se foi dado enter no campo de código
+    private void codigoFieldEnterKeyListener(Controlador ctrl)
+    {
+        codigo.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                if(isENTERKey(event)){
                     try{
-                        String v = listview.getItems().get((Integer) number2);
-                        
-                        String codigo = v.substring(v.indexOf("[") + 1, v.indexOf("]"));
+                        //pega o produto do banco de dados
+                        Produto p = ctrl.database.productDB.getProduct(codigo.getText());
 
-                        codigoLinhaSelecionada = codigo;
-                        
-                        Produto _p = ctrl.database.productDB.getProduct(codigo);
-                        produto.setText(_p.nome);
+                        //se o produto existir, preenche os campos com os dados do produto
+                        if(p != null){
+                            nome.setText(p.getNome());
+                            custo.setText(p.getValorDeCompra()+"");
+                            venda.setText(p.getValorDeVenda()+"");
+                            quantidade.setText(p.getQuantidade()+"");
+                            if(p instanceof Livro){
+                                Livro l = (Livro) p;
+                                arg1.setText(l.getEditora());
+                                arg2.setText(l.getIsbn());
+                            }
+                            else if(p instanceof Consumivel){
+                                Consumivel c = (Consumivel) p;
+                                arg1.setText(c.getValidade());
+                                arg2.setText(c.getPorcao());
+                            }
 
-                        //Polimorfismo aplicado aqui
-                        produto.setText(_p.nome);
-                        info.setText(_p.toString());
+                            codigoOriginal = codigo.getText();
+
+                            //muda o botão para atualizar
+                            btn_cadastrar.setText("Atualizar");
+                            btn_cadastrar.setStyle("-fx-background-color: #ffb86c; ");
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Produto não encontrado!");
+                        }
 
                     } catch(Exception e)
                     {
                         throw new RuntimeException("Erro: "+e.getMessage());
                     }
-
                 }
-            });
+            }
+        });
+    }
 
-            //checa se foi dado enter no campo de código
-            codigo.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent event) {
-                    //System.out.println(event.toString());
-                    if(event.getCode().toString().equalsIgnoreCase("ENTER")){
-                        try{
-                            Controlador ctrl = Controlador.getInstance();
+    //responsável por atualizar a label info de acordo com o produto selecionado
+    private void listViewListener(Controlador ctrl)
+    {
+        listview.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+                try{
+                    String v = listview.getItems().get((Integer) number2);
+                    
+                    String codigo = v.substring(v.indexOf("[") + 1, v.indexOf("]"));
 
-                            //pega o produto do banco de dados
-                            Produto p = ctrl.database.productDB.getProduct(codigo.getText());
+                    codigoLinhaSelecionada = codigo;
+                    
+                    Produto _p = ctrl.database.productDB.getProduct(codigo);
+                    produto.setText(_p.nome);
 
-                            //se o produto existir, preenche os campos com os dados do produto
-                            if(p != null){
-                                nome.setText(p.getNome());
-                                custo.setText(p.getValorDeCompra()+"");
-                                venda.setText(p.getValorDeVenda()+"");
-                                quantidade.setText(p.getQuantidade()+"");
-                                if(p instanceof Livro){
-                                    Livro l = (Livro) p;
-                                    arg1.setText(l.getEditora());
-                                    arg2.setText(l.getIsbn());
-                                }
-                                else if(p instanceof Consumivel){
-                                    Consumivel c = (Consumivel) p;
-                                    arg1.setText(c.getValidade());
-                                    arg2.setText(c.getPorcao());
-                                }
+                    //Polimorfismo aplicado aqui
+                    produto.setText(_p.nome);
+                    info.setText(_p.toString());
 
-                                codigoOriginal = codigo.getText();
-
-                                //muda o botão para atualizar
-                                btn_cadastrar.setText("Atualizar");
-                                btn_cadastrar.setStyle("-fx-background-color: #ffb86c; ");
-                            }
-                            else{
-                                JOptionPane.showMessageDialog(null, "Produto não encontrado!");
-                            }
-
-                        } catch(Exception e)
-                        {
-                            throw new RuntimeException("Erro: "+e.getMessage());
-                        }
-                    }
+                } catch(Exception e)
+                {
+                    throw new RuntimeException("Erro: "+e.getMessage());
                 }
-            });
-          
+
+            }
+        });
+    }
+
+    //Code smell: long method
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        Controlador ctrl = Controlador.getInstance();
+        initializeTipoFieldValues();
+        updateLabelsWithProductType();
+        listViewListener(ctrl);
+        codigoFieldEnterKeyListener(ctrl);
         CarregarLista();
     }
 
